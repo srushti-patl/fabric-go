@@ -4,17 +4,17 @@ All URIs are relative to *https://api.equinix.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTimeServices**](PrecisionTimeApi.md#CreateTimeServices) | **Post** /fabric/v4/timeServices | Create time service
-[**DeleteTimeServiceById**](PrecisionTimeApi.md#DeleteTimeServiceById) | **Delete** /fabric/v4/timeServices/{serviceId} | Delete time service
-[**GetTimeServicesById**](PrecisionTimeApi.md#GetTimeServicesById) | **Get** /fabric/v4/timeServices/{serviceId} | Get time service
-[**GetTimeServicesConnectionsByServiceId**](PrecisionTimeApi.md#GetTimeServicesConnectionsByServiceId) | **Get** /fabric/v4/timeServices/{serviceId}/connections | Get Conn Links
-[**GetTimeServicesPackageByCode**](PrecisionTimeApi.md#GetTimeServicesPackageByCode) | **Get** /fabric/v4/timeServicesPackages/{packageCode} | Get package by Code
-[**GetTimeServicesPackages**](PrecisionTimeApi.md#GetTimeServicesPackages) | **Get** /fabric/v4/timeServicesPackages | Get Packages
-[**UpdateTimeServicesById**](PrecisionTimeApi.md#UpdateTimeServicesById) | **Patch** /fabric/v4/timeServices/{serviceId} | Patch time service
+[**CreateTimeServices**](PrecisionTimeApi.md#CreateTimeServices) | **Post** /fabric/v4/timeServices | Create Time Service
+[**DeleteTimeServiceById**](PrecisionTimeApi.md#DeleteTimeServiceById) | **Delete** /fabric/v4/timeServices/{serviceId} | Delete Time Service
+[**GetTimeServicesById**](PrecisionTimeApi.md#GetTimeServicesById) | **Get** /fabric/v4/timeServices/{serviceId} | Get Time Service
+[**GetTimeServicesConnectionsByServiceId**](PrecisionTimeApi.md#GetTimeServicesConnectionsByServiceId) | **Get** /fabric/v4/timeServices/{serviceId}/connections | Get all Connections
+[**GetTimeServicesPackageByCode**](PrecisionTimeApi.md#GetTimeServicesPackageByCode) | **Get** /fabric/v4/timeServicePackages/{packageCode} | Get Package by Code
+[**GetTimeServicesPackages**](PrecisionTimeApi.md#GetTimeServicesPackages) | **Get** /fabric/v4/timeServicePackages | Get Packages
+[**UpdateTimeServicesById**](PrecisionTimeApi.md#UpdateTimeServicesById) | **Patch** /fabric/v4/timeServices/{serviceId} | Patch Time Service
 
 # **CreateTimeServices**
 > PrecisionTimeServiceCreateResponse CreateTimeServices(ctx, body)
-Create time service
+Create Time Service
 
 The API provides capability to create timing service
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 # **DeleteTimeServiceById**
 > PrecisionTimeServiceCreateResponse DeleteTimeServiceById(ctx, serviceId)
-Delete time service
+Delete Time Service
 
 Delete EPT service by it's uuid
 
@@ -70,9 +70,9 @@ Name | Type | Description  | Notes
 
 # **GetTimeServicesById**
 > PrecisionTimeServiceCreateResponse GetTimeServicesById(ctx, serviceId)
-Get time service
+Get Time Service
 
-The API provides capability to get prevision timing service's details
+The API provides capability to get precision timing service's details
 
 ### Required Parameters
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 # **GetTimeServicesConnectionsByServiceId**
 > PrecisionTimeServiceConnectionsResponse GetTimeServicesConnectionsByServiceId(ctx, serviceId)
-Get Conn Links
+Get all Connections
 
 The API provides capability to get prevision timing service's details
 
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 # **GetTimeServicesPackageByCode**
 > PackageResponse GetTimeServicesPackageByCode(ctx, packageCode)
-Get package by Code
+Get Package by Code
 
 The API provides capability to get timing service's package by code
 
@@ -178,7 +178,7 @@ This endpoint does not need any parameter.
 
 # **UpdateTimeServicesById**
 > PrecisionTimeServiceCreateResponse UpdateTimeServicesById(ctx, body, serviceId)
-Patch time service
+Patch Time Service
 
 The API provides capability to update timing service
 

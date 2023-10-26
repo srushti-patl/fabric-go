@@ -17,7 +17,7 @@ type PrecisionTimeServiceRequest struct {
 	Description          string                 `json:"description,omitempty"`
 	Package_             *PackageRequest        `json:"package"`
 	Connections          []FabricConnectionUuid `json:"connections"`
-	NetworkingIpv4       *Ipv4                  `json:"networkingIpv4"`
+	Ipv4                 *Ipv4                  `json:"ipv4"`
 	AdvanceConfiguration *AdvanceConfiguration  `json:"advanceConfiguration,omitempty"`
 	Project              *Project               `json:"project,omitempty"`
 }

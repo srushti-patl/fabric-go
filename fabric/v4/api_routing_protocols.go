@@ -10,8 +10,10 @@
 package v4
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -117,6 +119,7 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -267,6 +270,7 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocolsInBulk(ctx 
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -417,6 +421,7 @@ func (a *RoutingProtocolsApiService) DeleteConnectionRoutingProtocolByUuid(ctx c
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -580,6 +585,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolAllBgpActions(c
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -729,6 +735,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolByUuid(ctx cont
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -890,6 +897,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocols(ctx context.C
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1031,6 +1039,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsBgpActionByUui
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1172,6 +1181,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChangeByUuid(c
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1325,6 +1335,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChanges(ctx co
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1467,6 +1478,7 @@ func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx co
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1619,6 +1631,7 @@ func (a *RoutingProtocolsApiService) PostConnectionRoutingProtocolBgpActionByUui
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1771,6 +1784,7 @@ func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx 
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1921,6 +1935,7 @@ func (a *RoutingProtocolsApiService) ValidateRoutingProtocol(ctx context.Context
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

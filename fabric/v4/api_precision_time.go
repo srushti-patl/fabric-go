@@ -10,8 +10,10 @@
 package v4
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -26,7 +28,7 @@ var (
 type PrecisionTimeApiService service
 
 /*
-PrecisionTimeApiService Create time service
+PrecisionTimeApiService Create Time Service
 The API provides capability to create timing service
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param body
@@ -80,6 +82,7 @@ func (a *PrecisionTimeApiService) CreateTimeServices(ctx context.Context, body P
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -97,7 +100,7 @@ func (a *PrecisionTimeApiService) CreateTimeServices(ctx context.Context, body P
 			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
-		if localVarHttpResponse.StatusCode == 200 {
+		if localVarHttpResponse.StatusCode == 202 {
 			var v PrecisionTimeServiceCreateResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -164,7 +167,7 @@ func (a *PrecisionTimeApiService) CreateTimeServices(ctx context.Context, body P
 }
 
 /*
-PrecisionTimeApiService Delete time service
+PrecisionTimeApiService Delete Time Service
 Delete EPT service by it&#x27;s uuid
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param serviceId Service UUID
@@ -217,6 +220,7 @@ func (a *PrecisionTimeApiService) DeleteTimeServiceById(ctx context.Context, ser
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -291,8 +295,8 @@ func (a *PrecisionTimeApiService) DeleteTimeServiceById(ctx context.Context, ser
 }
 
 /*
-PrecisionTimeApiService Get time service
-The API provides capability to get prevision timing service&#x27;s details
+PrecisionTimeApiService Get Time Service
+The API provides capability to get precision timing service&#x27;s details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param serviceId Service UUID
 
@@ -344,6 +348,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesById(ctx context.Context, servi
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -428,7 +433,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesById(ctx context.Context, servi
 }
 
 /*
-PrecisionTimeApiService Get Conn Links
+PrecisionTimeApiService Get all Connections
 The API provides capability to get prevision timing service&#x27;s details
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param serviceId Service UUID
@@ -481,6 +486,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesConnectionsByServiceId(ctx cont
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -555,7 +561,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesConnectionsByServiceId(ctx cont
 }
 
 /*
-PrecisionTimeApiService Get package by Code
+PrecisionTimeApiService Get Package by Code
 The API provides capability to get timing service&#x27;s package by code
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param packageCode Package Code
@@ -572,7 +578,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesPackageByCode(ctx context.Conte
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/fabric/v4/timeServicesPackages/{packageCode}"
+	localVarPath := a.client.cfg.BasePath + "/fabric/v4/timeServicePackages/{packageCode}"
 	localVarPath = strings.Replace(localVarPath, "{"+"packageCode"+"}", fmt.Sprintf("%v", packageCode), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -608,6 +614,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesPackageByCode(ctx context.Conte
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -678,7 +685,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesPackages(ctx context.Context) (
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/fabric/v4/timeServicesPackages"
+	localVarPath := a.client.cfg.BasePath + "/fabric/v4/timeServicePackages"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -713,6 +720,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesPackages(ctx context.Context) (
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -767,7 +775,7 @@ func (a *PrecisionTimeApiService) GetTimeServicesPackages(ctx context.Context) (
 }
 
 /*
-PrecisionTimeApiService Patch time service
+PrecisionTimeApiService Patch Time Service
 The API provides capability to update timing service
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param body
@@ -823,6 +831,7 @@ func (a *PrecisionTimeApiService) UpdateTimeServicesById(ctx context.Context, bo
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

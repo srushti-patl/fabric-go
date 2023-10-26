@@ -10,7 +10,9 @@
 package v4
 
 import (
+	"bytes"
 	"context"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -76,6 +78,7 @@ func (a *HealthApiService) GetStatus(ctx context.Context) (HealthResponse, *http
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
 	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

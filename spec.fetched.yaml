@@ -4814,8 +4814,8 @@ paths:
     get:
       tags:
         - Precision Time
-      summary: Get time service
-      description: The API provides capability to get prevision timing service's details
+      summary: Get Time Service
+      description: The API provides capability to get precision timing service's details
       operationId: getTimeServicesById
       parameters:
         - name: serviceId
@@ -4968,7 +4968,7 @@ paths:
     delete:
       tags:
         - Precision Time
-      summary: Delete time service
+      summary: Delete Time Service
       description: Delete EPT service by it's uuid
       operationId: deleteTimeServiceById
       parameters:
@@ -5027,7 +5027,7 @@ paths:
     patch:
       tags:
         - Precision Time
-      summary: Patch time service
+      summary: Patch Time Service
       description: The API provides capability to update timing service
       operationId: updateTimeServicesById
       parameters:
@@ -5194,7 +5194,7 @@ paths:
     post:
       tags:
         - Precision Time
-      summary: Create time service
+      summary: Create Time Service
       description: The API provides capability to create timing service
       operationId: createTimeServices
       parameters: []
@@ -5212,7 +5212,7 @@ paths:
                 $ref: "#/components/examples/ptpSingleEnterpriseWithAdvanceConfiguration"
         required: true
       responses:
-        "200":
+        "202":
           description: Successful operation
           content:
             application/json:
@@ -5356,7 +5356,7 @@ paths:
     get:
       tags:
         - Precision Time
-      summary: Get Conn Links
+      summary: Get all Connections
       description: The API provides capability to get prevision timing service's details
       operationId: getTimeServicesConnectionsByServiceId
       parameters:
@@ -5412,7 +5412,7 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
-  /fabric/v4/timeServicesPackages:
+  /fabric/v4/timeServicePackages:
     get:
       tags:
         - Precision Time
@@ -5448,11 +5448,11 @@ paths:
               examples:
                 example:
                   $ref: "#/components/examples/500"
-  "/fabric/v4/timeServicesPackages/{packageCode}":
+  "/fabric/v4/timeServicePackages/{packageCode}":
     get:
       tags:
         - Precision Time
-      summary: Get package by Code
+      summary: Get Package by Code
       description: The API provides capability to get timing service's package by code
       operationId: getTimeServicesPackageByCode
       parameters:
@@ -8098,7 +8098,7 @@ components:
       title: precisionTimeServiceResponse
       required:
         - href
-        - networkingIpv4
+        - ipv4
         - package
         - state
         - type
@@ -8146,7 +8146,7 @@ components:
           description: fabric l2 connections used for the ept service
           items:
             $ref: "#/components/schemas/fabricConnectionUuid"
-        networkingIpv4:
+        ipv4:
           $ref: "#/components/schemas/ipv4"
         account:
           $ref: "#/components/schemas/account"
@@ -8173,7 +8173,7 @@ components:
           type: string
           description: path inside document leading to updated parameter
           enum:
-            - /networkingIpv4
+            - /ipv4
             - /name
             - /advanceConfiguration/ntp
             - /advanceConfiguration/ptp
@@ -8187,7 +8187,7 @@ components:
       required:
         - connections
         - name
-        - networkingIpv4
+        - ipv4
         - package
         - type
       type: object
@@ -8208,7 +8208,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/fabricConnectionUuid"
-        networkingIpv4:
+        ipv4:
           $ref: "#/components/schemas/ipv4"
         advanceConfiguration:
           $ref: "#/components/schemas/advanceConfiguration"
@@ -20223,9 +20223,9 @@ components:
           - href: https://api.equinix.com/fabric/v4/connections/a8ba52de-faae-43b5-b0b1-6904d37ee011
             uuid: 06dbb0e3-e55d-4090-8aff-fc5654abaad0
         package:
-          href: https://api.equinix.com/fabric/v4/timeServicesPackages/NTP_STANDARD
+          href: https://api.equinix.com/fabric/v4/timeServicePackages/NTP_STANDARD
           code: NTP_STANDARD
-        networkingIpv4:
+        ipv4:
           primary: 192.168.0.2
           secondary: 192.168.0.3
           networkMask: 255.255.255.255
@@ -20474,7 +20474,7 @@ components:
           - uuid: 06dbb0e3-e55d-4090-8aff-fc5654abaad0
         package:
           code: NTP_STANDARD
-        networkingIpv4:
+        ipv4:
           primary: 192.168.0.2
           secondary: 192.168.0.3
           networkMask: 255.255.255.255
@@ -20487,7 +20487,7 @@ components:
           - uuid: 06dbb0e3-e55d-4090-8aff-fc5654abaad0
         package:
           code: PTP_STANDARD
-        networkingIpv4:
+        ipv4:
           primary: 192.168.0.2
           secondary: 192.168.0.3
           networkMask: 255.255.255.255
@@ -20500,7 +20500,7 @@ components:
           - uuid: 06dbb0e3-e55d-4090-8aff-fc5654abaad0
         package:
           code: PTP_STANDARD
-        networkingIpv4:
+        ipv4:
           primary: 192.168.0.2
           secondary: 192.168.0.3
           networkMask: 255.255.255.255
@@ -20534,44 +20534,30 @@ components:
           limit: 20
           total: 4
         data:
-          - href: https://api.equinix.com/fabric/v4/precisiontime/packages/NTP_STANDARD
+          - href: https://api.equinix.com/fabric/v4/timeServicePackages/NTP_STANDARD
             code: NTP_STANDARD
             type: TIME_SERVICE_PACKAGE
             bandwidth: 1
-            bandwidthUnit: Mbps
-            accuracySlaMax: 50
-            accuracyAvgMin: 1
-            accuracyAvgMax: 100
-            accuracyUnit: millisecond
             clientsPerSecondMax: 2000
             redundancySupported: true
             multiSubnetSupported: true
             changeLog:
               createdDateTime: 2023-05-16T07:50:49.749Z
               updatedDateTime: 2023-05-17T07:50:49.749Z
-          - href: https://api.equinix.com/fabric/v4/precisiontime/packages/NTP_ENTERPRISE
+          - href: https://api.equinix.com/fabric/v4/timeServicePackages/NTP_ENTERPRISE
             code: NTP_ENTERPRISE
             type: TIME_SERVICE_PACKAGE
             bandwidth: 5
-            bandwidthUnit: Mbps
-            accuracySlaMax: 50
-            accuracyAvgMin: 1
-            accuracyAvgMax: 100
-            accuracyUnit: millisecond
             clientsPerSecondMax: 1000
             redundancySupported: true
             multiSubnetSupported: true
             changeLog:
               createdDateTime: 2023-05-16T07:50:49.749Z
               updatedDateTime: 2023-05-17T07:50:49.749Z
-          - href: https://api.equinix.com/fabric/v4/precisiontime/packages/PTP_STANDARD
+          - href: https://api.equinix.com/fabric/v4/timeServicePackages/PTP_STANDARD
             code: PTP_STANDARD
             type: TIME_SERVICE_PACKAGE
             bandwidth: 5
-            bandwidthUnit: Mbps
-            accuracyAvgMin: 1
-            accuracyAvgMax: 10
-            accuracyUnit: millisecond
             clientsPerSecondMax: 100
             redundancySupported: true
             multiSubnetSupported: true
@@ -20582,10 +20568,6 @@ components:
             code: PTP_ENTERPRISE
             type: TIME_SERVICE_PACKAGE
             bandwidth: 10
-            bandwidthUnit: Mbps
-            accuracyAvgMin: 1
-            accuracyAvgMax: 10
-            accuracyUnit: millisecond
             clientsPerSecondMax: 20
             redundancySupported: true
             multiSubnetSupported: true
@@ -20598,11 +20580,6 @@ components:
         code: NTP_STANDARD
         type: TIME_SERVICE_PACKAGE
         bandwidth: 10
-        bandwidthUnit: Mbps
-        accuracySlaMax: 50
-        accuracyAvgMin: 1
-        accuracyAvgMax: 10
-        accuracyUnit: millisecond
         clientsPerSecondMax: 100
         redundancySupported: true
         multiSubnetSupported: true

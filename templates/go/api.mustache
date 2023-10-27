@@ -2,16 +2,15 @@
 {{>partial_header}}
 package {{packageName}}
 
-
 {{#operations}}
 import (
     "bytes"
-	"context"
-	"io"
-	"io/ioutil"
-	"net/http"
-	"net/url"
-	"strings"
+    "context"
+    "io"
+    "io/ioutil"
+    "net/http"
+    "net/url"
+    "strings"
 {{#imports}}	"{{import}}"
 {{/imports}}
 )

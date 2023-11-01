@@ -12,6 +12,7 @@ package v4
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -29,37 +30,34 @@ var (
 
 type RoutingProtocolsApiService service
 
+func (v *RoutingProtocolData) UnmarshalJSON(data []byte) error {
+	strData := string(data)
+	if strData == "null" || strData == `""` {
+		return nil
+	}
 
-func (a *RoutingProtocolsApiService) decodeRP(v *RoutingProtocolData, b []byte, contentType string) (err error) {
-	//get type of response body
 	var (
-		localVarReturnBGP    RoutingProtocolBgpData
-		localVarReturnDirect RoutingProtocolDirectData
+		d RoutingProtocolDirectData
+		b RoutingProtocolBgpData
 	)
 
-	err = a.client.decode(&v, b, contentType)
-	if err != nil {
-		return err
-	}
-	// decode response based on type, overwrite return value's oneof field
-	if v.Type_ == "BGP" {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnBGP, b, contentType)
-		// try decoding as a bgp, return if no error
-		if err == nil {
-			v.RoutingProtocolBgpData = localVarReturnBGP
+	if strings.Contains(strData, "DIRECT") {
+		if err := json.Unmarshal(data, &d); err != nil {
 			return err
 		}
+		v.Type_ = "DIRECT"
+		v.RoutingProtocolDirectData = d
 	}
-	if v.Type_ == "DIRECT" {
-		// try decoding as a direct rp
-		err = a.client.decode(&localVarReturnDirect, b, contentType)
-		if err == nil {
-			v.RoutingProtocolDirectData = localVarReturnDirect
+
+	if strings.Contains(strData, "BGP") {
+		if err := json.Unmarshal(data, &b); err != nil {
 			return err
 		}
+		v.Type_ = "BGP"
+		v.RoutingProtocolBgpData = b
 	}
-	return err
+
+	return nil
 }
 
 /*
@@ -126,8 +124,8 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.decodeRP(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
-		if err != nil {
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
 	}
@@ -139,7 +137,7 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context
 		}
 		if localVarHttpResponse.StatusCode == 202 {
 			var v RoutingProtocolData
-			err = a.decodeRP(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -277,7 +275,6 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocolsInBulk(ctx 
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		// fixme: why is this a get response?
 		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
@@ -428,7 +425,7 @@ func (a *RoutingProtocolsApiService) DeleteConnectionRoutingProtocolByUuid(ctx c
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.decodeRP(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -441,7 +438,7 @@ func (a *RoutingProtocolsApiService) DeleteConnectionRoutingProtocolByUuid(ctx c
 		}
 		if localVarHttpResponse.StatusCode == 202 {
 			var v RoutingProtocolData
-			err = a.decodeRP(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -742,7 +739,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolByUuid(ctx cont
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.decodeRP(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -755,7 +752,7 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolByUuid(ctx cont
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v RoutingProtocolData
-			err = a.decodeRP(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -1485,7 +1482,7 @@ func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx co
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.decodeRP(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1498,7 +1495,7 @@ func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx co
 		}
 		if localVarHttpResponse.StatusCode == 202 {
 			var v RoutingProtocolData
-			err = a.decodeRP(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -1791,7 +1788,7 @@ func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx 
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.decodeRP(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1804,7 +1801,7 @@ func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx 
 		}
 		if localVarHttpResponse.StatusCode == 202 {
 			var v RoutingProtocolData
-			err = a.decodeRP(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr

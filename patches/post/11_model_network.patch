@@ -1,0 +1,22 @@
+diff --git a/fabric/v4/model_network.go b/fabric/v4/model_network.go
+index 476318e..3f50180 100644
+--- a/fabric/v4/model_network.go
++++ b/fabric/v4/model_network.go
+@@ -19,4 +19,17 @@ type Network struct {
+ 	Project  *Project            `json:"project,omitempty"`
+ 	// Preferences for notifications on network configuration or status changes
+ 	Notifications []SimplifiedNotification `json:"notifications"`
++	// Network URI
++	Href string `json:"href"`
++	// Equinix-assigned network identifier
++	Uuid  string        `json:"uuid"`
++	State *NetworkState `json:"state"`
++	// number of connections created on the network
++	ConnectionsCount float64                  `json:"connectionsCount,omitempty"`
++	Account          *SimplifiedAccount       `json:"account,omitempty"`
++	Change           *SimplifiedNetworkChange `json:"change,omitempty"`
++	Operation        *NetworkOperation        `json:"operation,omitempty"`
++	ChangeLog        *Changelog               `json:"changeLog"`
++	// Network sub-resources links
++	Links []Link `json:"links,omitempty"`
+ }

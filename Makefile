@@ -41,7 +41,7 @@ GOLANGCI_LINT=golangci-lint
 all: pull fetch patch generate stage
 
 # Used for github workflows because the spec file is already present in the repo
-generate: clean gen mod fmt patch-post docs move-other test
+generate: clean gen mod fmt docs move-other patch-post test
 
 # Update the IMAGE variable above to either ${OPENAPI_CODEGEN_IMAGE} or ${SWAGGER_CODEGEN_IMAGE}
 # depending on the job that you will be using to generate the Fabric Go SDK

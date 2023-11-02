@@ -7878,6 +7878,7 @@ components:
       type: object
       description: Network specification
       allOf:
+        - $ref: "#/components/schemas/NetworkPostRequest"
         - required:
             - changeLog
             - href
@@ -7915,7 +7916,6 @@ components:
               readOnly: true
               items:
                 $ref: "#/components/schemas/Link"
-        - $ref: "#/components/schemas/NetworkPostRequest"
     NetworkId:
       type: string
       description: Network UUID

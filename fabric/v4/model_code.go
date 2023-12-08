@@ -13,8 +13,8 @@ type Code string
 
 // List of code
 const (
-	LAB_Code     Code = "LAB"
-	BASIC_Code   Code = "BASIC"
-	PRO_Code     Code = "PRO"
-	PREMIUM_Code Code = "PREMIUM"
+	LAB_Code      Code = "LAB"
+	BASIC_Code    Code = "BASIC"
+	STANDARD_Code Code = "STANDARD"
+	PREMIUM_Code  Code = "PREMIUM"
 )

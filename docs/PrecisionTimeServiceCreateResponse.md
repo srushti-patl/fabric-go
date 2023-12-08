@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **State** | **string** | indicate service state | [default to null]
 **Package_** | [***PackageResponse**](PackageResponse.md) |  | [default to null]
 **Connections** | [**[]FabricConnectionUuid**](fabricConnectionUuid.md) | fabric l2 connections used for the ept service | [optional] [default to null]
-**Ipv4** | [***Ipv4**](ipv4.md) |  | [default to null]
+**NetworkingIpv4** | [***Ipv4**](ipv4.md) |  | [default to null]
 **Account** | [***Account**](account.md) |  | [optional] [default to null]
 **AdvanceConfiguration** | [***AdvanceConfiguration**](advanceConfiguration.md) |  | [optional] [default to null]
 **Project** | [***Project**](Project.md) |  | [optional] [default to null]

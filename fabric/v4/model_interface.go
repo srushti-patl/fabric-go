@@ -8,14 +8,16 @@
  */
 package v4
 
-// Virtual Device Interface Information
+// Interface Information
 type ModelInterface struct {
-	// Virtual Interface URI
+	// Interface URI
 	Href string `json:"href,omitempty"`
-	// Equinix-assigned Virtual Device Interface identifier
+	// Equinix-assigned Interface identifier
 	Uuid string `json:"uuid,omitempty"`
 	// Interface id
 	Id int32 `json:"id,omitempty"`
-	// Virtual Device Interface type
+	// Interface type
 	Type_ string `json:"type,omitempty"`
+	// Interface Project ID
+	ProjectId string `json:"projectId,omitempty"`
 }

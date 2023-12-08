@@ -13,8 +13,8 @@ type FabricCloudRouterCode string
 
 // List of FabricCloudRouterCode
 const (
-	LAB_FabricCloudRouterCode     FabricCloudRouterCode = "LAB"
-	BASIC_FabricCloudRouterCode   FabricCloudRouterCode = "BASIC"
-	PRO_FabricCloudRouterCode     FabricCloudRouterCode = "PRO"
-	PREMIUM_FabricCloudRouterCode FabricCloudRouterCode = "PREMIUM"
+	LAB_FabricCloudRouterCode      FabricCloudRouterCode = "LAB"
+	BASIC_FabricCloudRouterCode    FabricCloudRouterCode = "BASIC"
+	STANDARD_FabricCloudRouterCode FabricCloudRouterCode = "STANDARD"
+	PREMIUM_FabricCloudRouterCode  FabricCloudRouterCode = "PREMIUM"
 )

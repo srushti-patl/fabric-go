@@ -17,4 +17,5 @@ const (
 	DOT1_Q_LinkProtocolType     LinkProtocolType = "DOT1Q"
 	QINQ_LinkProtocolType       LinkProtocolType = "QINQ"
 	EVPN_VXLAN_LinkProtocolType LinkProtocolType = "EVPN_VXLAN"
+	VXLAN_LinkProtocolType      LinkProtocolType = "VXLAN"
 )

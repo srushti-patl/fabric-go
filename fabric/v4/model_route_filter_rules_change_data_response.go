@@ -8,11 +8,8 @@
  */
 package v4
 
-type ValidateSubnetRequestFilterAnd struct {
-	// Path to property
-	Property string `json:"property,omitempty"`
-	// Type of operation
-	Operator string `json:"operator,omitempty"`
-	// Values for the given property
-	Values []string `json:"values,omitempty"`
+// List of Route Filter Rule changes
+type RouteFilterRulesChangeDataResponse struct {
+	Pagination *Pagination                  `json:"pagination,omitempty"`
+	Data       []RouteFilterRulesChangeData `json:"data,omitempty"`
 }

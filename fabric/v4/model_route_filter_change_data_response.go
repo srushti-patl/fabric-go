@@ -8,7 +8,8 @@
  */
 package v4
 
-// Validate connection auth api key or vlan
-type ValidateConnectionRequest struct {
-	Filter *ValidateSubnetRequestFilter `json:"filter,omitempty"`
+// List of Route Filter changes
+type RouteFilterChangeDataResponse struct {
+	Pagination *Pagination             `json:"pagination,omitempty"`
+	Data       []RouteFilterChangeData `json:"data,omitempty"`
 }

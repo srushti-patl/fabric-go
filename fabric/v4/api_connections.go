@@ -811,7 +811,7 @@ This API provides capability to validate by auth key
 
 @return ConnectionResponse
 */
-func (a *ConnectionsApiService) ValidateConnections(ctx context.Context, body ValidateConnectionRequest) (ConnectionResponse, *http.Response, error) {
+func (a *ConnectionsApiService) ValidateConnections(ctx context.Context, body ValidateRequest) (ConnectionResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}

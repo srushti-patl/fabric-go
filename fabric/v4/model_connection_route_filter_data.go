@@ -8,7 +8,13 @@
  */
 package v4
 
-// Filters
-type ValidateSubnetRequestFilter struct {
-	And []ValidateSubnetRequestFilterAnd `json:"and,omitempty"`
+type ConnectionRouteFilterData struct {
+	// Route Filter URI
+	Href string `json:"href,omitempty"`
+	// Route Filter type
+	Type_ string `json:"type,omitempty"`
+	// Route Filter identifier
+	Uuid             string `json:"uuid,omitempty"`
+	AttachmentStatus string `json:"attachmentStatus,omitempty"`
+	Direction        string `json:"direction,omitempty"`
 }

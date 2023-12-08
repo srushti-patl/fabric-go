@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreateServiceProfile**](ServiceProfilesApi.md#CreateServiceProfile) | **Post** /fabric/v4/serviceProfiles | Create Profile
 [**DeleteServiceProfileByUuid**](ServiceProfilesApi.md#DeleteServiceProfileByUuid) | **Delete** /fabric/v4/serviceProfiles/{serviceProfileId} | Delete Profile
 [**GetServiceProfileByUuid**](ServiceProfilesApi.md#GetServiceProfileByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId} | Get Profile
+[**GetServiceProfileMetrosByUuid**](ServiceProfilesApi.md#GetServiceProfileMetrosByUuid) | **Get** /fabric/v4/serviceProfiles/{serviceProfileId}/metros | Get Profile Metros
 [**GetServiceProfiles**](ServiceProfilesApi.md#GetServiceProfiles) | **Get** /fabric/v4/serviceProfiles | Get all Profiles
 [**PutServiceProfileByUuid**](ServiceProfilesApi.md#PutServiceProfileByUuid) | **Put** /fabric/v4/serviceProfiles/{serviceProfileId} | Replace Profile
 [**SearchServiceProfiles**](ServiceProfilesApi.md#SearchServiceProfiles) | **Post** /fabric/v4/serviceProfiles/search | Profile Search
@@ -92,6 +93,43 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceProfile**](ServiceProfile.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json; charset=UTF-8, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetServiceProfileMetrosByUuid**
+> ServiceMetros GetServiceProfileMetrosByUuid(ctx, serviceProfileId, optional)
+Get Profile Metros
+
+Get service profile metros by UUID.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **serviceProfileId** | [**string**](.md)| Service Profile UUID | 
+ **optional** | ***ServiceProfilesApiGetServiceProfileMetrosByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceProfilesApiGetServiceProfileMetrosByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **offset** | **optional.Int32**| offset | 
+ **limit** | **optional.Int32**| number of records to fetch | 
+
+### Return type
+
+[**ServiceMetros**](ServiceMetros.md)
 
 ### Authorization
 

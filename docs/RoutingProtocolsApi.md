@@ -410,7 +410,7 @@ This API provides capability to validate all subnets associated with any connect
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**ValidateSubnetRequest**](ValidateSubnetRequest.md)|  | 
+  **body** | [**ValidateRequest**](ValidateRequest.md)|  | 
   **routerId** | [**string**](.md)| Cloud Router UUID | 
 
 ### Return type

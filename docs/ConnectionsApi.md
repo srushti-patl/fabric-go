@@ -201,7 +201,7 @@ This API provides capability to validate by auth key
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**ValidateConnectionRequest**](ValidateConnectionRequest.md)|  | 
+  **body** | [**ValidateRequest**](ValidateRequest.md)|  | 
 
 ### Return type
 

@@ -13,8 +13,8 @@ type RouterPackageCode string
 
 // List of RouterPackageCode
 const (
-	LAB_RouterPackageCode     RouterPackageCode = "LAB"
-	BASIC_RouterPackageCode   RouterPackageCode = "BASIC"
-	PRO_RouterPackageCode     RouterPackageCode = "PRO"
-	PREMIUM_RouterPackageCode RouterPackageCode = "PREMIUM"
+	LAB_RouterPackageCode      RouterPackageCode = "LAB"
+	BASIC_RouterPackageCode    RouterPackageCode = "BASIC"
+	STANDARD_RouterPackageCode RouterPackageCode = "STANDARD"
+	PREMIUM_RouterPackageCode  RouterPackageCode = "PREMIUM"
 )

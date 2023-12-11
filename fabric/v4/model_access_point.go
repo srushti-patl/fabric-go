@@ -26,5 +26,6 @@ type AccessPoint struct {
 	// Access point authentication key
 	AuthenticationKey string `json:"authenticationKey,omitempty"`
 	// Provider assigned Connection Id
-	ProviderConnectionId string `json:"providerConnectionId,omitempty"`
+	ProviderConnectionId string          `json:"providerConnectionId,omitempty"`
+	VirtualNetwork       *VirtualNetwork `json:"virtualNetwork,omitempty"`
 }

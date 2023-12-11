@@ -12,5 +12,6 @@ type OneOfLinkProtocol struct {
 	LinkProtocolUntagged
 	LinkProtocolDot1q
 	LinkProtocolQinq
+	LinkProtocolVxlan
 	LinkProtocolEvpnVxlan
 }

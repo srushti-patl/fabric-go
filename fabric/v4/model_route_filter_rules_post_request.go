@@ -8,9 +8,8 @@
  */
 package v4
 
-// EPT service instance's L2 connections
-type PrecisionTimeServiceConnectionsResponse struct {
-	Pagination *Pagination `json:"pagination,omitempty"`
-	// Data returned from the API call
-	Data []ConnectionLink `json:"data,omitempty"`
+// Create Route Filter Rule POST request
+type RouteFilterRulesPostRequest struct {
+	// Route Filter Rule configuration
+	Data []RouteFilterRulesBase `json:"data,omitempty"`
 }

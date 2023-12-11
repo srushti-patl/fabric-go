@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **string** | metro code | [optional] [default to null]
 **Name** | **string** | metro name | [optional] [default to null]
+**VcBandwidthMax** | **int32** | max VC speed supported in Mbps | [optional] [default to null]
 **Ibxs** | **[]string** |  | [optional] [default to null]
 **InTrail** | **bool** |  | [optional] [default to null]
 **DisplayName** | **string** | service metro display name | [optional] [default to null]

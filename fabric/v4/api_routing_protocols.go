@@ -1883,7 +1883,7 @@ This API provides capability to validate all subnets associated with any connect
 
 @return ValidateSubnetResponse
 */
-func (a *RoutingProtocolsApiService) ValidateRoutingProtocol(ctx context.Context, body ValidateSubnetRequest, routerId string) (ValidateSubnetResponse, *http.Response, error) {
+func (a *RoutingProtocolsApiService) ValidateRoutingProtocol(ctx context.Context, body ValidateRequest, routerId string) (ValidateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}

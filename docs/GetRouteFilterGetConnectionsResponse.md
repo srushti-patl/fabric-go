@@ -1,11 +1,10 @@
-# ConnectionLink
+# GetRouteFilterGetConnectionsResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | **string** |  | [optional] [default to null]
-**Type_** | **string** |  | [optional] [default to null]
-**Uuid** | **string** |  | [optional] [default to null]
+**Pagination** | [***Pagination**](Pagination.md) |  | [optional] [default to null]
+**Data** | [**[]RouteFilterConnectionsData**](RouteFilterConnectionsData.md) | List of Connections using a Route Filter | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

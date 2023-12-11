@@ -8,8 +8,8 @@
  */
 package v4
 
-type ConnectionLink struct {
-	Href  string `json:"href,omitempty"`
-	Type_ string `json:"type,omitempty"`
-	Uuid  string `json:"uuid,omitempty"`
+// List of Route Filter Rule changes
+type RouteFilterRulesChangeDataResponse struct {
+	Pagination *Pagination                  `json:"pagination,omitempty"`
+	Data       []RouteFilterRulesChangeData `json:"data,omitempty"`
 }

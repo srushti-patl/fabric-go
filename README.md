@@ -57,12 +57,9 @@ Class | Method | HTTP request | Description
 *PortsApi* | [**GetPorts**](docs/PortsApi.md#getports) | **Get** /fabric/v4/ports | Get All Ports
 *PortsApi* | [**GetVlans**](docs/PortsApi.md#getvlans) | **Get** /fabric/v4/ports/{portUuid}/linkProtocols | Get Vlans
 *PortsApi* | [**SearchPorts**](docs/PortsApi.md#searchports) | **Post** /fabric/v4/ports/search | Search ports
-*PrecisionTimeApi* | [**CreateTimeServices**](docs/PrecisionTimeApi.md#createtimeservices) | **Post** /fabric/v4/timeServices | Create time service
+*PrecisionTimeApi* | [**CreateTimeServices**](docs/PrecisionTimeApi.md#createtimeservices) | **Post** /fabric/v4/timeServices | Create Time Service
 *PrecisionTimeApi* | [**DeleteTimeServiceById**](docs/PrecisionTimeApi.md#deletetimeservicebyid) | **Delete** /fabric/v4/timeServices/{serviceId} | Delete time service
-*PrecisionTimeApi* | [**GetTimeServicesById**](docs/PrecisionTimeApi.md#gettimeservicesbyid) | **Get** /fabric/v4/timeServices/{serviceId} | Get time service
-*PrecisionTimeApi* | [**GetTimeServicesConnectionsByServiceId**](docs/PrecisionTimeApi.md#gettimeservicesconnectionsbyserviceid) | **Get** /fabric/v4/timeServices/{serviceId}/connections | Get Conn Links
-*PrecisionTimeApi* | [**GetTimeServicesPackageByCode**](docs/PrecisionTimeApi.md#gettimeservicespackagebycode) | **Get** /fabric/v4/timeServicesPackages/{packageCode} | Get package by Code
-*PrecisionTimeApi* | [**GetTimeServicesPackages**](docs/PrecisionTimeApi.md#gettimeservicespackages) | **Get** /fabric/v4/timeServicesPackages | Get Packages
+*PrecisionTimeApi* | [**GetTimeServicesById**](docs/PrecisionTimeApi.md#gettimeservicesbyid) | **Get** /fabric/v4/timeServices/{serviceId} | Get Time Service
 *PrecisionTimeApi* | [**UpdateTimeServicesById**](docs/PrecisionTimeApi.md#updatetimeservicesbyid) | **Patch** /fabric/v4/timeServices/{serviceId} | Patch time service
 *PricesApi* | [**SearchPrices**](docs/PricesApi.md#searchprices) | **Post** /fabric/v4/prices/search | Get Prices
 *RouteFilterRulesApi* | [**CreateRouteFilterRule**](docs/RouteFilterRulesApi.md#createroutefilterrule) | **Post** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules | Create RFRule
@@ -180,7 +177,6 @@ Class | Method | HTTP request | Description
  - [ConnectionCompanyProfile](docs/ConnectionCompanyProfile.md)
  - [ConnectionDirection](docs/ConnectionDirection.md)
  - [ConnectionInvitation](docs/ConnectionInvitation.md)
- - [ConnectionLink](docs/ConnectionLink.md)
  - [ConnectionOperation](docs/ConnectionOperation.md)
  - [ConnectionPostRequest](docs/ConnectionPostRequest.md)
  - [ConnectionPriority](docs/ConnectionPriority.md)
@@ -310,9 +306,7 @@ Class | Method | HTTP request | Description
  - [PortType](docs/PortType.md)
  - [PortV4SearchRequest](docs/PortV4SearchRequest.md)
  - [PrecisionTimeChangeOperation](docs/PrecisionTimeChangeOperation.md)
- - [PrecisionTimeServiceConnectionsResponse](docs/PrecisionTimeServiceConnectionsResponse.md)
  - [PrecisionTimeServiceCreateResponse](docs/PrecisionTimeServiceCreateResponse.md)
- - [PrecisionTimeServicePackagesResponse](docs/PrecisionTimeServicePackagesResponse.md)
  - [PrecisionTimeServiceRequest](docs/PrecisionTimeServiceRequest.md)
  - [Presence](docs/Presence.md)
  - [Price](docs/Price.md)

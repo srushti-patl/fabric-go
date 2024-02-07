@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**UpdateCloudRouterByUuid**](CloudRoutersApi.md#UpdateCloudRouterByUuid) | **Patch** /fabric/v4/routers/{routerId} | Update Routers
 
 # **CreateCloudRouter**
-> CloudRouter CreateCloudRouter(ctx, body)
+> CloudRouter CreateCloudRouter(ctx, body, optional)
 Create Routers
 
 This API provides capability to create user's Cloud Routers
@@ -27,6 +27,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**CloudRouterPostRequest**](CloudRouterPostRequest.md)|  | 
+ **optional** | ***CloudRoutersApiCreateCloudRouterOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiCreateCloudRouterOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -44,7 +54,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateCloudRouterAction**
-> CloudRouterActionResponse CreateCloudRouterAction(ctx, body, routerId)
+> CloudRouterActionResponse CreateCloudRouterAction(ctx, body, routerId, optional)
 Route table actions
 
 This API provides capability to refresh route table and bgp session summary information
@@ -56,6 +66,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**CloudRouterActionRequest**](CloudRouterActionRequest.md)|  | 
   **routerId** | [**string**](.md)| Router UUID | 
+ **optional** | ***CloudRoutersApiCreateCloudRouterActionOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiCreateCloudRouterActionOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -73,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteCloudRouterByUuid**
-> DeleteCloudRouterByUuid(ctx, routerId)
+> DeleteCloudRouterByUuid(ctx, routerId, optional)
 Delete Routers
 
 This API provides capability to delete user's Cloud Routers
@@ -84,6 +105,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routerId** | [**string**](.md)| Cloud Router UUID | 
+ **optional** | ***CloudRoutersApiDeleteCloudRouterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiDeleteCloudRouterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 
@@ -120,6 +150,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **state** | [**optional.Interface of CloudRouterActionState**](.md)| Action state | 
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -137,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCloudRouterByUuid**
-> CloudRouter GetCloudRouterByUuid(ctx, routerId)
+> CloudRouter GetCloudRouterByUuid(ctx, routerId, optional)
 Get Routers
 
 This API provides capability to retrieve user's Cloud Routers
@@ -148,6 +181,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routerId** | [**string**](.md)| Cloud Router UUID | 
+ **optional** | ***CloudRoutersApiGetCloudRouterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiGetCloudRouterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 
@@ -165,7 +207,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCloudRouterPackageByCode**
-> CloudRouterPackage GetCloudRouterPackageByCode(ctx, routerPackageCode)
+> CloudRouterPackage GetCloudRouterPackageByCode(ctx, routerPackageCode, optional)
 Get Package Details
 
 This API provides capability to retrieve user's Cloud Routers Package Details
@@ -176,6 +218,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routerPackageCode** | [**RouterPackageCode**](.md)| Equinix-assigned Cloud Router package identifier | 
+ **optional** | ***CloudRoutersApiGetCloudRouterPackageByCodeOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiGetCloudRouterPackageByCodeOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 
@@ -209,6 +260,8 @@ Name | Type | Description  | Notes
 Optional parameters are passed through a pointer to a CloudRoutersApiGetCloudRouterPackagesOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
  **offset** | **optional.Int32**| offset | 
  **limit** | **optional.Int32**| number of records to fetch | 
 
@@ -228,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SearchCloudRouterRoutes**
-> RouteTableEntrySearchResponse SearchCloudRouterRoutes(ctx, body, routerId)
+> RouteTableEntrySearchResponse SearchCloudRouterRoutes(ctx, body, routerId, optional)
 Search Route Table
 
 The API provides capability to get list of user's Fabric Cloud Router route table entries using search criteria, including optional filtering, pagination and sorting
@@ -240,6 +293,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**RouteTableEntrySearchRequest**](RouteTableEntrySearchRequest.md)|  | 
   **routerId** | [**string**](.md)| Router UUID | 
+ **optional** | ***CloudRoutersApiSearchCloudRouterRoutesOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiSearchCloudRouterRoutesOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -257,7 +321,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SearchCloudRouters**
-> SearchResponse SearchCloudRouters(ctx, body)
+> SearchResponse SearchCloudRouters(ctx, body, optional)
 Search Routers
 
 The API provides capability to get list of user's Cloud Routers using search criteria, including optional filtering, pagination and sorting
@@ -268,6 +332,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**CloudRouterSearchRequest**](CloudRouterSearchRequest.md)|  | 
+ **optional** | ***CloudRoutersApiSearchCloudRoutersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiSearchCloudRoutersOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 
@@ -285,7 +358,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateCloudRouterByUuid**
-> CloudRouter UpdateCloudRouterByUuid(ctx, body, routerId)
+> CloudRouter UpdateCloudRouterByUuid(ctx, body, routerId, optional)
 Update Routers
 
 This API provides capability to update user's Cloud Routers
@@ -297,6 +370,16 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**[]CloudRouterChangeOperation**](CloudRouterChangeOperation.md)|  | 
   **routerId** | [**string**](.md)| Cloud Router UUID | 
+ **optional** | ***CloudRoutersApiUpdateCloudRouterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CloudRoutersApiUpdateCloudRouterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 

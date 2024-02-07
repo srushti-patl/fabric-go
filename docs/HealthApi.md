@@ -7,13 +7,24 @@ Method | HTTP request | Description
 [**GetStatus**](HealthApi.md#GetStatus) | **Get** /fabric/v4/health | Get service status
 
 # **GetStatus**
-> HealthResponse GetStatus(ctx, )
+> HealthResponse GetStatus(ctx, optional)
 Get service status
 
 GET All service health statys with an option query parameter to return all Equinix Fabric customer in which the customer has a presence.
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***HealthApiGetStatusOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a HealthApiGetStatusOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **correlationId** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 

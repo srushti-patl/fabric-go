@@ -15,6 +15,8 @@ type Connection struct {
 	Href string `json:"href,omitempty"`
 	// Equinix-assigned connection identifier
 	Uuid string `json:"uuid,omitempty"`
+	// Equinix-assigned platform connection identifier
+	PlatformUuid string `json:"platformUuid,omitempty"`
 	// Customer-provided connection name
 	Name string `json:"name"`
 	// Customer-provided connection description
@@ -23,6 +25,8 @@ type Connection struct {
 	Change      *Change              `json:"change,omitempty"`
 	Operation   *ConnectionOperation `json:"operation,omitempty"`
 	Order       *Order               `json:"order,omitempty"`
+	// User-provided tags
+	Tags []string `json:"tags,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
 	Account       *SimplifiedAccount       `json:"account,omitempty"`

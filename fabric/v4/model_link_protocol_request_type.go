@@ -13,9 +13,8 @@ type LinkProtocolRequestType string
 
 // List of LinkProtocolRequestType
 const (
-	UNTAGGED_LinkProtocolRequestType    LinkProtocolRequestType = "UNTAGGED"
-	DOT1_Q_LinkProtocolRequestType      LinkProtocolRequestType = "DOT1Q"
-	QINQ_LinkProtocolRequestType        LinkProtocolRequestType = "QINQ"
-	EVPN_VXLAN_LinkProtocolRequestType  LinkProtocolRequestType = "EVPN_VXLAN"
-	UNTAGGEDEPL_LinkProtocolRequestType LinkProtocolRequestType = "UNTAGGEDEPL"
+	UNTAGGED_LinkProtocolRequestType LinkProtocolRequestType = "UNTAGGED"
+	DOT1_Q_LinkProtocolRequestType   LinkProtocolRequestType = "DOT1Q"
+	QINQ_LinkProtocolRequestType     LinkProtocolRequestType = "QINQ"
+	VXLAN_LinkProtocolRequestType    LinkProtocolRequestType = "VXLAN"
 )

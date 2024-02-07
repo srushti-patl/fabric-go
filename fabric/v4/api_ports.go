@@ -31,13 +31,21 @@ type PortsApiService service
 /*
 PortsApiService Add to Lag
 Add Physical Ports to Virtual Port.&lt;font color&#x3D;\&quot;red\&quot;&gt; &lt;sup color&#x3D;&#x27;red&#x27;&gt;Preview&lt;/sup&gt;&lt;/font&gt;
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param portId Port UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param portId Port UUID
+ * @param optional nil or *PortsApiAddToLagOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return AllPhysicalPortsResponse
 */
-func (a *PortsApiService) AddToLag(ctx context.Context, body BulkPhysicalPort, portId string) (AllPhysicalPortsResponse, *http.Response, error) {
+
+type PortsApiAddToLagOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *PortsApiService) AddToLag(ctx context.Context, body BulkPhysicalPort, portId string, localVarOptionals *PortsApiAddToLagOpts) (AllPhysicalPortsResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -70,6 +78,12 @@ func (a *PortsApiService) AddToLag(ctx context.Context, body BulkPhysicalPort, p
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -151,13 +165,21 @@ func (a *PortsApiService) AddToLag(ctx context.Context, body BulkPhysicalPort, p
 
 /*
 PortsApiService Create Port
-Create Port creates Equinix Fabric? Port.&lt;font color&#x3D;\&quot;red\&quot;&gt; &lt;sup color&#x3D;&#x27;red&#x27;&gt;Preview&lt;/sup&gt;&lt;/font&gt;
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+Create Port creates Equinix Fabric™ Port.&lt;font color&#x3D;\&quot;red\&quot;&gt; &lt;sup color&#x3D;&#x27;red&#x27;&gt;Preview&lt;/sup&gt;&lt;/font&gt;
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *PortsApiCreateBulkPortOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return AllPortsResponse
 */
-func (a *PortsApiService) CreateBulkPort(ctx context.Context, body BulkPort) (AllPortsResponse, *http.Response, error) {
+
+type PortsApiCreateBulkPortOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *PortsApiService) CreateBulkPort(ctx context.Context, body BulkPort, localVarOptionals *PortsApiCreateBulkPortOpts) (AllPortsResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -189,6 +211,12 @@ func (a *PortsApiService) CreateBulkPort(ctx context.Context, body BulkPort) (Al
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -240,13 +268,21 @@ func (a *PortsApiService) CreateBulkPort(ctx context.Context, body BulkPort) (Al
 
 /*
 PortsApiService Create Port
-Creates Equinix Fabric? Port.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+Creates Equinix Fabric™ Port.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *PortsApiCreatePortOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return Port
 */
-func (a *PortsApiService) CreatePort(ctx context.Context, body Port) (Port, *http.Response, error) {
+
+type PortsApiCreatePortOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *PortsApiService) CreatePort(ctx context.Context, body Port, localVarOptionals *PortsApiCreatePortOpts) (Port, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -278,6 +314,12 @@ func (a *PortsApiService) CreatePort(ctx context.Context, body Port) (Port, *htt
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -573,12 +615,20 @@ func (a *PortsApiService) GetPorts(ctx context.Context, localVarOptionals *Ports
 /*
 PortsApiService Get Vlans
 The API provides capability to retrieve Vlans for a Port.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param portUuid Port UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param portUuid Port UUID
+ * @param optional nil or *PortsApiGetVlansOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return LinkProtocolGetResponse
 */
-func (a *PortsApiService) GetVlans(ctx context.Context, portUuid string) (LinkProtocolGetResponse, *http.Response, error) {
+
+type PortsApiGetVlansOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *PortsApiService) GetVlans(ctx context.Context, portUuid string, localVarOptionals *PortsApiGetVlansOpts) (LinkProtocolGetResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -611,6 +661,12 @@ func (a *PortsApiService) GetVlans(ctx context.Context, portUuid string) (LinkPr
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -681,12 +737,18 @@ func (a *PortsApiService) GetVlans(ctx context.Context, portUuid string) (LinkPr
 /*
 PortsApiService Search ports
 The API provides capability to get list of user&#x27;s virtual ports using search criteria, including optional filtering, pagination and sorting
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *PortsApiSearchPortsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
 @return AllPortsResponse
 */
-func (a *PortsApiService) SearchPorts(ctx context.Context, body PortV4SearchRequest) (AllPortsResponse, *http.Response, error) {
+
+type PortsApiSearchPortsOpts struct {
+	XCORRELATIONID optional.String
+}
+
+func (a *PortsApiService) SearchPorts(ctx context.Context, body PortV4SearchRequest, localVarOptionals *PortsApiSearchPortsOpts) (AllPortsResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -718,6 +780,9 @@ func (a *PortsApiService) SearchPorts(ctx context.Context, body PortV4SearchRequ
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

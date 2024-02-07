@@ -17,6 +17,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -29,12 +31,20 @@ type NetworksApiService service
 /*
 NetworksApiService Create Network
 This API provides capability to create user&#x27;s Fabric Network
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *NetworksApiCreateNetworkOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return Network
 */
-func (a *NetworksApiService) CreateNetwork(ctx context.Context, body NetworkPostRequest) (Network, *http.Response, error) {
+
+type NetworksApiCreateNetworkOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) CreateNetwork(ctx context.Context, body NetworkPostRequest, localVarOptionals *NetworksApiCreateNetworkOpts) (Network, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -66,6 +76,12 @@ func (a *NetworksApiService) CreateNetwork(ctx context.Context, body NetworkPost
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -168,12 +184,20 @@ func (a *NetworksApiService) CreateNetwork(ctx context.Context, body NetworkPost
 /*
 NetworksApiService Delete Network By ID
 This API provides capability to delete user&#x27;s Fabric Network
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param networkId Network UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param networkId Network UUID
+ * @param optional nil or *NetworksApiDeleteNetworkByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return Network
 */
-func (a *NetworksApiService) DeleteNetworkByUuid(ctx context.Context, networkId string) (Network, *http.Response, error) {
+
+type NetworksApiDeleteNetworkByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) DeleteNetworkByUuid(ctx context.Context, networkId string, localVarOptionals *NetworksApiDeleteNetworkByUuidOpts) (Network, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -206,6 +230,12 @@ func (a *NetworksApiService) DeleteNetworkByUuid(ctx context.Context, networkId 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -296,12 +326,20 @@ func (a *NetworksApiService) DeleteNetworkByUuid(ctx context.Context, networkId 
 /*
 NetworksApiService Get Connections
 The API provides capability to get list of user&#x27;s Fabric Network connections
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param networkId Network UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param networkId Network UUID
+ * @param optional nil or *NetworksApiGetConnectionsByNetworkUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return NetworkConnections
 */
-func (a *NetworksApiService) GetConnectionsByNetworkUuid(ctx context.Context, networkId string) (NetworkConnections, *http.Response, error) {
+
+type NetworksApiGetConnectionsByNetworkUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) GetConnectionsByNetworkUuid(ctx context.Context, networkId string, localVarOptionals *NetworksApiGetConnectionsByNetworkUuidOpts) (NetworkConnections, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -334,6 +372,12 @@ func (a *NetworksApiService) GetConnectionsByNetworkUuid(ctx context.Context, ne
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -424,12 +468,20 @@ func (a *NetworksApiService) GetConnectionsByNetworkUuid(ctx context.Context, ne
 /*
 NetworksApiService Get Network By ID
 This API provides capability to retrieve user&#x27;s Fabric Network
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param networkId Network UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param networkId Network UUID
+ * @param optional nil or *NetworksApiGetNetworkByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return Network
 */
-func (a *NetworksApiService) GetNetworkByUuid(ctx context.Context, networkId string) (Network, *http.Response, error) {
+
+type NetworksApiGetNetworkByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) GetNetworkByUuid(ctx context.Context, networkId string, localVarOptionals *NetworksApiGetNetworkByUuidOpts) (Network, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -462,6 +514,12 @@ func (a *NetworksApiService) GetNetworkByUuid(ctx context.Context, networkId str
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -542,13 +600,21 @@ func (a *NetworksApiService) GetNetworkByUuid(ctx context.Context, networkId str
 /*
 NetworksApiService Get Change By ID
 This API provides capability to retrieve user&#x27;s Fabric Network Change
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param networkId Network UUID
-  - @param changeId Network Change UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param networkId Network UUID
+ * @param changeId Network Change UUID
+ * @param optional nil or *NetworksApiGetNetworkChangeByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return NetworkChange
 */
-func (a *NetworksApiService) GetNetworkChangeByUuid(ctx context.Context, networkId string, changeId string) (NetworkChange, *http.Response, error) {
+
+type NetworksApiGetNetworkChangeByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) GetNetworkChangeByUuid(ctx context.Context, networkId string, changeId string, localVarOptionals *NetworksApiGetNetworkChangeByUuidOpts) (NetworkChange, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -582,6 +648,12 @@ func (a *NetworksApiService) GetNetworkChangeByUuid(ctx context.Context, network
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -672,12 +744,20 @@ func (a *NetworksApiService) GetNetworkChangeByUuid(ctx context.Context, network
 /*
 NetworksApiService Get Network Changes
 The API provides capability to get list of user&#x27;s Fabric Network changes
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param networkId Network UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param networkId Network UUID
+ * @param optional nil or *NetworksApiGetNetworkChangesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return NetworkChangeResponse
 */
-func (a *NetworksApiService) GetNetworkChanges(ctx context.Context, networkId string) (NetworkChangeResponse, *http.Response, error) {
+
+type NetworksApiGetNetworkChangesOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) GetNetworkChanges(ctx context.Context, networkId string, localVarOptionals *NetworksApiGetNetworkChangesOpts) (NetworkChangeResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -710,6 +790,12 @@ func (a *NetworksApiService) GetNetworkChanges(ctx context.Context, networkId st
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -800,12 +886,20 @@ func (a *NetworksApiService) GetNetworkChanges(ctx context.Context, networkId st
 /*
 NetworksApiService Search Network
 The API provides capability to get list of user&#x27;s Fabric Network using search criteria, including optional filtering, pagination and sorting
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *NetworksApiSearchNetworksOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return NetworkSearchResponse
 */
-func (a *NetworksApiService) SearchNetworks(ctx context.Context, body NetworkSearchRequest) (NetworkSearchResponse, *http.Response, error) {
+
+type NetworksApiSearchNetworksOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) SearchNetworks(ctx context.Context, body NetworkSearchRequest, localVarOptionals *NetworksApiSearchNetworksOpts) (NetworkSearchResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -837,6 +931,12 @@ func (a *NetworksApiService) SearchNetworks(ctx context.Context, body NetworkSea
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -929,13 +1029,21 @@ func (a *NetworksApiService) SearchNetworks(ctx context.Context, body NetworkSea
 /*
 NetworksApiService Update Network By ID
 This API provides capability to update user&#x27;s Fabric Network
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param networkId Network UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param networkId Network UUID
+ * @param optional nil or *NetworksApiUpdateNetworkByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return Network
 */
-func (a *NetworksApiService) UpdateNetworkByUuid(ctx context.Context, body []NetworkChangeOperation, networkId string) (Network, *http.Response, error) {
+
+type NetworksApiUpdateNetworkByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *NetworksApiService) UpdateNetworkByUuid(ctx context.Context, body []NetworkChangeOperation, networkId string, localVarOptionals *NetworksApiUpdateNetworkByUuidOpts) (Network, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -968,6 +1076,12 @@ func (a *NetworksApiService) UpdateNetworkByUuid(ctx context.Context, body []Net
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

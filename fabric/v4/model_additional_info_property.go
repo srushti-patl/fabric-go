@@ -8,9 +8,7 @@
  */
 package v4
 
-type AllOfRouteFiltersDataProject struct {
-	// Subscriber-assigned project ID
-	ProjectId string `json:"projectId"`
-	// Project URI
-	Href string `json:"href,omitempty"`
+type AdditionalInfoProperty struct {
+	Key   string `json:"key,omitempty"`
+	Value string `json:"value,omitempty"`
 }

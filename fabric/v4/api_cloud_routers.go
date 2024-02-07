@@ -31,12 +31,22 @@ type CloudRoutersApiService service
 /*
 CloudRoutersApiService Create Routers
 This API provides capability to create user&#x27;s Cloud Routers
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *CloudRoutersApiCreateCloudRouterOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return CloudRouter
 */
-func (a *CloudRoutersApiService) CreateCloudRouter(ctx context.Context, body CloudRouterPostRequest) (CloudRouter, *http.Response, error) {
+
+type CloudRoutersApiCreateCloudRouterOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *CloudRoutersApiService) CreateCloudRouter(ctx context.Context, body CloudRouterPostRequest, localVarOptionals *CloudRoutersApiCreateCloudRouterOpts) (CloudRouter, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -68,6 +78,15 @@ func (a *CloudRoutersApiService) CreateCloudRouter(ctx context.Context, body Clo
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -170,13 +189,23 @@ func (a *CloudRoutersApiService) CreateCloudRouter(ctx context.Context, body Clo
 /*
 CloudRoutersApiService Route table actions
 This API provides capability to refresh route table and bgp session summary information
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routerId Router UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routerId Router UUID
+ * @param optional nil or *CloudRoutersApiCreateCloudRouterActionOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return CloudRouterActionResponse
 */
-func (a *CloudRoutersApiService) CreateCloudRouterAction(ctx context.Context, body CloudRouterActionRequest, routerId string) (CloudRouterActionResponse, *http.Response, error) {
+
+type CloudRoutersApiCreateCloudRouterActionOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *CloudRoutersApiService) CreateCloudRouterAction(ctx context.Context, body CloudRouterActionRequest, routerId string, localVarOptionals *CloudRoutersApiCreateCloudRouterActionOpts) (CloudRouterActionResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -209,6 +238,15 @@ func (a *CloudRoutersApiService) CreateCloudRouterAction(ctx context.Context, bo
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -321,10 +359,20 @@ func (a *CloudRoutersApiService) CreateCloudRouterAction(ctx context.Context, bo
 /*
 CloudRoutersApiService Delete Routers
 This API provides capability to delete user&#x27;s Cloud Routers
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routerId Cloud Router UUID
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routerId Cloud Router UUID
+ * @param optional nil or *CloudRoutersApiDeleteCloudRouterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+
 */
-func (a *CloudRoutersApiService) DeleteCloudRouterByUuid(ctx context.Context, routerId string) (*http.Response, error) {
+
+type CloudRoutersApiDeleteCloudRouterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *CloudRoutersApiService) DeleteCloudRouterByUuid(ctx context.Context, routerId string, localVarOptionals *CloudRoutersApiDeleteCloudRouterByUuidOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -356,6 +404,12 @@ func (a *CloudRoutersApiService) DeleteCloudRouterByUuid(ctx context.Context, ro
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -442,11 +496,17 @@ This API provides capability to fetch action status
  * @param routerId Router UUID
  * @param optional nil or *CloudRoutersApiGetCloudRouterActionsOpts - Optional Parameters:
      * @param "State" (optional.Interface of CloudRouterActionState) -  Action state
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return CloudRouterActionResponse
 */
 
 type CloudRoutersApiGetCloudRouterActionsOpts struct {
-	State optional.Interface
+	State          optional.Interface
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
 }
 
 func (a *CloudRoutersApiService) GetCloudRouterActions(ctx context.Context, routerId string, localVarOptionals *CloudRoutersApiGetCloudRouterActionsOpts) (CloudRouterActionResponse, *http.Response, error) {
@@ -485,6 +545,15 @@ func (a *CloudRoutersApiService) GetCloudRouterActions(ctx context.Context, rout
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -595,12 +664,20 @@ func (a *CloudRoutersApiService) GetCloudRouterActions(ctx context.Context, rout
 /*
 CloudRoutersApiService Get Routers
 This API provides capability to retrieve user&#x27;s Cloud Routers
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routerId Cloud Router UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routerId Cloud Router UUID
+ * @param optional nil or *CloudRoutersApiGetCloudRouterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return CloudRouter
 */
-func (a *CloudRoutersApiService) GetCloudRouterByUuid(ctx context.Context, routerId string) (CloudRouter, *http.Response, error) {
+
+type CloudRoutersApiGetCloudRouterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *CloudRoutersApiService) GetCloudRouterByUuid(ctx context.Context, routerId string, localVarOptionals *CloudRoutersApiGetCloudRouterByUuidOpts) (CloudRouter, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -633,6 +710,12 @@ func (a *CloudRoutersApiService) GetCloudRouterByUuid(ctx context.Context, route
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -723,12 +806,20 @@ func (a *CloudRoutersApiService) GetCloudRouterByUuid(ctx context.Context, route
 /*
 CloudRoutersApiService Get Package Details
 This API provides capability to retrieve user&#x27;s Cloud Routers Package Details
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routerPackageCode Equinix-assigned Cloud Router package identifier
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routerPackageCode Equinix-assigned Cloud Router package identifier
+ * @param optional nil or *CloudRoutersApiGetCloudRouterPackageByCodeOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return CloudRouterPackage
 */
-func (a *CloudRoutersApiService) GetCloudRouterPackageByCode(ctx context.Context, routerPackageCode RouterPackageCode) (CloudRouterPackage, *http.Response, error) {
+
+type CloudRoutersApiGetCloudRouterPackageByCodeOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *CloudRoutersApiService) GetCloudRouterPackageByCode(ctx context.Context, routerPackageCode RouterPackageCode, localVarOptionals *CloudRoutersApiGetCloudRouterPackageByCodeOpts) (CloudRouterPackage, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -761,6 +852,12 @@ func (a *CloudRoutersApiService) GetCloudRouterPackageByCode(ctx context.Context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -863,14 +960,18 @@ CloudRoutersApiService List Packages
 This API provides capability to retrieve user&#x27;s Cloud Routers Packages
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CloudRoutersApiGetCloudRouterPackagesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return PackageResponse
 */
 
 type CloudRoutersApiGetCloudRouterPackagesOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *CloudRoutersApiService) GetCloudRouterPackages(ctx context.Context, localVarOptionals *CloudRoutersApiGetCloudRouterPackagesOpts) (PackageResponse, *http.Response, error) {
@@ -911,6 +1012,12 @@ func (a *CloudRoutersApiService) GetCloudRouterPackages(ctx context.Context, loc
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1001,13 +1108,23 @@ func (a *CloudRoutersApiService) GetCloudRouterPackages(ctx context.Context, loc
 /*
 CloudRoutersApiService Search Route Table
 The API provides capability to get list of user&#x27;s Fabric Cloud Router route table entries using search criteria, including optional filtering, pagination and sorting
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routerId Router UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routerId Router UUID
+ * @param optional nil or *CloudRoutersApiSearchCloudRouterRoutesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteTableEntrySearchResponse
 */
-func (a *CloudRoutersApiService) SearchCloudRouterRoutes(ctx context.Context, body RouteTableEntrySearchRequest, routerId string) (RouteTableEntrySearchResponse, *http.Response, error) {
+
+type CloudRoutersApiSearchCloudRouterRoutesOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *CloudRoutersApiService) SearchCloudRouterRoutes(ctx context.Context, body RouteTableEntrySearchRequest, routerId string, localVarOptionals *CloudRoutersApiSearchCloudRouterRoutesOpts) (RouteTableEntrySearchResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -1040,6 +1157,15 @@ func (a *CloudRoutersApiService) SearchCloudRouterRoutes(ctx context.Context, bo
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1152,12 +1278,20 @@ func (a *CloudRoutersApiService) SearchCloudRouterRoutes(ctx context.Context, bo
 /*
 CloudRoutersApiService Search Routers
 The API provides capability to get list of user&#x27;s Cloud Routers using search criteria, including optional filtering, pagination and sorting
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *CloudRoutersApiSearchCloudRoutersOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return SearchResponse
 */
-func (a *CloudRoutersApiService) SearchCloudRouters(ctx context.Context, body CloudRouterSearchRequest) (SearchResponse, *http.Response, error) {
+
+type CloudRoutersApiSearchCloudRoutersOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *CloudRoutersApiService) SearchCloudRouters(ctx context.Context, body CloudRouterSearchRequest, localVarOptionals *CloudRoutersApiSearchCloudRoutersOpts) (SearchResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -1189,6 +1323,12 @@ func (a *CloudRoutersApiService) SearchCloudRouters(ctx context.Context, body Cl
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1291,13 +1431,21 @@ func (a *CloudRoutersApiService) SearchCloudRouters(ctx context.Context, body Cl
 /*
 CloudRoutersApiService Update Routers
 This API provides capability to update user&#x27;s Cloud Routers
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routerId Cloud Router UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routerId Cloud Router UUID
+ * @param optional nil or *CloudRoutersApiUpdateCloudRouterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return CloudRouter
 */
-func (a *CloudRoutersApiService) UpdateCloudRouterByUuid(ctx context.Context, body []CloudRouterChangeOperation, routerId string) (CloudRouter, *http.Response, error) {
+
+type CloudRoutersApiUpdateCloudRouterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *CloudRoutersApiService) UpdateCloudRouterByUuid(ctx context.Context, body []CloudRouterChangeOperation, routerId string, localVarOptionals *CloudRoutersApiUpdateCloudRouterByUuidOpts) (CloudRouter, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1330,6 +1478,12 @@ func (a *CloudRoutersApiService) UpdateCloudRouterByUuid(ctx context.Context, bo
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

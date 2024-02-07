@@ -31,12 +31,18 @@ type MetrosApiService service
 /*
 MetrosApiService Get Metro by Code
 GET Metros retrieves all Equinix Fabric metros, as well as latency data between each metro location. .
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param metroCode Metro Code
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param metroCode Metro Code
+ * @param optional nil or *MetrosApiGetMetroByCodeOpts - Optional Parameters:
+     * @param "CorrelationId" (optional.String) -  Correlation identifier
 @return Metro
 */
-func (a *MetrosApiService) GetMetroByCode(ctx context.Context, metroCode string) (Metro, *http.Response, error) {
+
+type MetrosApiGetMetroByCodeOpts struct {
+	CorrelationId optional.String
+}
+
+func (a *MetrosApiService) GetMetroByCode(ctx context.Context, metroCode string, localVarOptionals *MetrosApiGetMetroByCodeOpts) (Metro, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -69,6 +75,9 @@ func (a *MetrosApiService) GetMetroByCode(ctx context.Context, metroCode string)
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.CorrelationId.IsSet() {
+		localVarHeaderParams["Correlation-Id"] = parameterToString(localVarOptionals.CorrelationId.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -154,13 +163,15 @@ GET All Subscriber Metros with an option query parameter to return all Equinix F
      * @param "Presence" (optional.Interface of Presence) -  User On Boarded Metros based on Fabric resource availability
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
+     * @param "CorrelationId" (optional.String) -  Correlation identifier
 @return MetroResponse
 */
 
 type MetrosApiGetMetrosOpts struct {
-	Presence optional.Interface
-	Offset   optional.Int32
-	Limit    optional.Int32
+	Presence      optional.Interface
+	Offset        optional.Int32
+	Limit         optional.Int32
+	CorrelationId optional.String
 }
 
 func (a *MetrosApiService) GetMetros(ctx context.Context, localVarOptionals *MetrosApiGetMetrosOpts) (MetroResponse, *http.Response, error) {
@@ -204,6 +215,9 @@ func (a *MetrosApiService) GetMetros(ctx context.Context, localVarOptionals *Met
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.CorrelationId.IsSet() {
+		localVarHeaderParams["Correlation-Id"] = parameterToString(localVarOptionals.CorrelationId.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {

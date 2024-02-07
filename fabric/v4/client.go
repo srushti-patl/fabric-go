@@ -36,7 +36,7 @@ var (
 	xmlCheck  = regexp.MustCompile("(?i:[application|text]/xml)")
 )
 
-// APIClient manages communication with the Equinix Fabric API v4 API v4.11
+// APIClient manages communication with the Equinix Fabric API v4 API v4.11.30
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -47,6 +47,8 @@ type APIClient struct {
 	CloudRoutersApi *CloudRoutersApiService
 
 	ConnectionsApi *ConnectionsApiService
+
+	EventsApi *EventsApiService
 
 	HealthApi *HealthApiService
 
@@ -91,6 +93,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.CloudRoutersApi = (*CloudRoutersApiService)(&c.common)
 	c.ConnectionsApi = (*ConnectionsApiService)(&c.common)
+	c.EventsApi = (*EventsApiService)(&c.common)
 	c.HealthApi = (*HealthApiService)(&c.common)
 	c.MetrosApi = (*MetrosApiService)(&c.common)
 	c.NetworksApi = (*NetworksApiService)(&c.common)

@@ -26,4 +26,10 @@ type PortDemarcationPoint struct {
 	ConnectorType string `json:"connectorType,omitempty"`
 	// Port ibx identifier
 	Ibx string `json:"ibx,omitempty"`
+	// Port reservation identifier
+	PortReservationId string `json:"portReservationId,omitempty"`
+	// Port group identifier
+	PortGroup string `json:"portGroup,omitempty"`
+	// Port identifier
+	CorrelationId string `json:"correlationId,omitempty"`
 }

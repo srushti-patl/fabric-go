@@ -8,8 +8,12 @@
  */
 package v4
 
-// EPT Package Request
-type PackageRequest struct {
-	Href string `json:"href,omitempty"`
-	Code string `json:"code"`
+type GetRpOperationStatusEvent struct {
+	SubType  string `json:"subType,omitempty"`
+	Severity int32  `json:"severity,omitempty"`
+	// event description
+	Message         string         `json:"message,omitempty"`
+	RoutingProtocol *EventMetadata `json:"routingProtocol,omitempty"`
+	Connection      *EventMetadata `json:"connection,omitempty"`
+	Router          *EventMetadata `json:"router,omitempty"`
 }

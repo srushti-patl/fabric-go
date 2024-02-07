@@ -16,6 +16,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -28,12 +30,18 @@ type PricesApiService service
 /*
 PricesApiService Get Prices
 Search prices by search criteria
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *PricesApiSearchPricesOpts - Optional Parameters:
+     * @param "CorrelationId" (optional.String) -  Correlation identifier
 @return PriceSearchResponse
 */
-func (a *PricesApiService) SearchPrices(ctx context.Context, body FilterBody) (PriceSearchResponse, *http.Response, error) {
+
+type PricesApiSearchPricesOpts struct {
+	CorrelationId optional.String
+}
+
+func (a *PricesApiService) SearchPrices(ctx context.Context, body FilterBody, localVarOptionals *PricesApiSearchPricesOpts) (PriceSearchResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -65,6 +73,9 @@ func (a *PricesApiService) SearchPrices(ctx context.Context, body FilterBody) (P
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.CorrelationId.IsSet() {
+		localVarHeaderParams["Correlation-Id"] = parameterToString(localVarOptionals.CorrelationId.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

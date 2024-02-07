@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**ReplaceRouteFilterRuleByUuid**](RouteFilterRulesApi.md#ReplaceRouteFilterRuleByUuid) | **Put** /fabric/v4/routeFilters/{routeFilterId}/routeFilterRules/{routeFilterRuleId} | ReplaceRFRule
 
 # **CreateRouteFilterRule**
-> RouteFilterRulesData CreateRouteFilterRule(ctx, body, routeFilterId)
+> RouteFilterRulesData CreateRouteFilterRule(ctx, body, routeFilterId, optional)
 Create RFRule
 
 This API provides capability to create a Route Filter Rule
@@ -27,6 +27,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**RouteFilterRulesBase**](RouteFilterRulesBase.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
+ **optional** | ***RouteFilterRulesApiCreateRouteFilterRuleOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiCreateRouteFilterRuleOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -44,7 +55,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateRouteFilterRulesInBulk**
-> GetRouteFilterRulesResponse CreateRouteFilterRulesInBulk(ctx, body, routeFilterId)
+> GetRouteFilterRulesResponse CreateRouteFilterRulesInBulk(ctx, body, routeFilterId, optional)
 Bulk RFRules
 
 This API provides capability to create bulk route filter rules
@@ -56,6 +67,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**RouteFilterRulesPostRequest**](RouteFilterRulesPostRequest.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
+ **optional** | ***RouteFilterRulesApiCreateRouteFilterRulesInBulkOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiCreateRouteFilterRulesInBulkOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -73,7 +95,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteRouteFilterRuleByUuid**
-> RouteFilterRulesData DeleteRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId)
+> RouteFilterRulesData DeleteRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId, optional)
 DeleteRFRule
 
 This API provides capability to delete a Route Filter Rule
@@ -85,6 +107,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **routeFilterRuleId** | [**string**](.md)| Route  Filter  Rules Id | 
+ **optional** | ***RouteFilterRulesApiDeleteRouteFilterRuleByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiDeleteRouteFilterRuleByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -102,7 +135,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRouteFilterRuleByUuid**
-> RouteFilterRulesData GetRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId)
+> RouteFilterRulesData GetRouteFilterRuleByUuid(ctx, routeFilterId, routeFilterRuleId, optional)
 GetRFRule By UUID
 
 This API provides capability to view a Route Filter Rule by UUID
@@ -114,6 +147,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **routeFilterRuleId** | [**string**](.md)| Route  Filter  Rules Id | 
+ **optional** | ***RouteFilterRulesApiGetRouteFilterRuleByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiGetRouteFilterRuleByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -131,7 +175,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRouteFilterRuleChangeByUuid**
-> RouteFilterRulesChangeData GetRouteFilterRuleChangeByUuid(ctx, routeFilterId, routeFilterRuleId, changeId)
+> RouteFilterRulesChangeData GetRouteFilterRuleChangeByUuid(ctx, routeFilterId, routeFilterRuleId, changeId, optional)
 Get Change By ID
 
 This API provides capability to retrieve a specific Route Filter Rule's Changes
@@ -144,6 +188,17 @@ Name | Type | Description  | Notes
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **routeFilterRuleId** | [**string**](.md)| Route  Filter  Rules Id | 
   **changeId** | [**string**](.md)| Route Filter Rule Change UUID | 
+ **optional** | ***RouteFilterRulesApiGetRouteFilterRuleChangeByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiGetRouteFilterRuleChangeByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 
@@ -181,6 +236,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
  **offset** | **optional.Int32**| offset | 
  **limit** | **optional.Int32**| number of records to fetch | 
 
@@ -218,6 +275,9 @@ Optional parameters are passed through a pointer to a RouteFilterRulesApiGetRout
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
  **offset** | **optional.Int32**| offset | 
  **limit** | **optional.Int32**| number of records to fetch | 
 
@@ -237,7 +297,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PatchRouteFilterRuleByUuid**
-> RouteFiltersData PatchRouteFilterRuleByUuid(ctx, body, routeFilterId, routeFilterRuleId)
+> RouteFilterRulesData PatchRouteFilterRuleByUuid(ctx, body, routeFilterId, routeFilterRuleId, optional)
 PatchRFilterRule
 
 This API provides capability to partially update a Route Filter Rule
@@ -247,13 +307,25 @@ This API provides capability to partially update a Route Filter Rule
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**[]RouteFilterChangePrefixMatch**](RouteFilterChangePrefixMatch.md)|  | 
+  **body** | [**[]RouteFilterRulesPatchRequestItem**](RouteFilterRulesPatchRequestItem.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **routeFilterRuleId** | [**string**](.md)| Route  Filter  Rules Id | 
+ **optional** | ***RouteFilterRulesApiPatchRouteFilterRuleByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiPatchRouteFilterRuleByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
-[**RouteFiltersData**](RouteFiltersData.md)
+[**RouteFilterRulesData**](RouteFilterRulesData.md)
 
 ### Authorization
 
@@ -267,7 +339,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ReplaceRouteFilterRuleByUuid**
-> RouteFilterRulesData ReplaceRouteFilterRuleByUuid(ctx, body, routeFilterId, routeFilterRuleId)
+> RouteFilterRulesData ReplaceRouteFilterRuleByUuid(ctx, body, routeFilterId, routeFilterRuleId, optional)
 ReplaceRFRule
 
 This API provides capability to replace a Route Filter Rule completely
@@ -280,6 +352,18 @@ Name | Type | Description  | Notes
   **body** | [**RouteFilterRulesBase**](RouteFilterRulesBase.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **routeFilterRuleId** | [**string**](.md)| Route  Filter  Rules Id | 
+ **optional** | ***RouteFilterRulesApiReplaceRouteFilterRuleByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFilterRulesApiReplaceRouteFilterRuleByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 

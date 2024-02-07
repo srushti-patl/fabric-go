@@ -15,12 +15,14 @@ type SimplifiedNetwork struct {
 	// Equinix-assigned network identifier
 	Uuid string `json:"uuid"`
 	// Customer-assigned network name
-	Name      string                   `json:"name,omitempty"`
-	State     *NetworkState            `json:"state,omitempty"`
-	Account   *SimplifiedAccount       `json:"account,omitempty"`
-	Change    *SimplifiedNetworkChange `json:"change,omitempty"`
-	Operation *NetworkOperation        `json:"operation,omitempty"`
-	ChangeLog *Changelog               `json:"changeLog,omitempty"`
+	Name string `json:"name,omitempty"`
+	// Equinix-assigned platform connection identifier
+	PlatformUuid string                   `json:"platformUuid,omitempty"`
+	State        *NetworkState            `json:"state,omitempty"`
+	Account      *SimplifiedAccount       `json:"account,omitempty"`
+	Change       *SimplifiedNetworkChange `json:"change,omitempty"`
+	Operation    *NetworkOperation        `json:"operation,omitempty"`
+	ChangeLog    *Changelog               `json:"changeLog,omitempty"`
 	// Network sub-resources links
 	Links    []Link              `json:"links,omitempty"`
 	Type_    *NetworkType        `json:"type,omitempty"`

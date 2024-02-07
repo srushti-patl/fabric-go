@@ -31,13 +31,23 @@ type RouteFilterRulesApiService service
 /*
 RouteFilterRulesApiService Create RFRule
 This API provides capability to create a Route Filter Rule
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routeFilterId Route Filters Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routeFilterId Route Filters Id
+ * @param optional nil or *RouteFilterRulesApiCreateRouteFilterRuleOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFilterRulesData
 */
-func (a *RouteFilterRulesApiService) CreateRouteFilterRule(ctx context.Context, body RouteFilterRulesBase, routeFilterId string) (RouteFilterRulesData, *http.Response, error) {
+
+type RouteFilterRulesApiCreateRouteFilterRuleOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFilterRulesApiService) CreateRouteFilterRule(ctx context.Context, body RouteFilterRulesBase, routeFilterId string, localVarOptionals *RouteFilterRulesApiCreateRouteFilterRuleOpts) (RouteFilterRulesData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -70,6 +80,15 @@ func (a *RouteFilterRulesApiService) CreateRouteFilterRule(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -182,13 +201,23 @@ func (a *RouteFilterRulesApiService) CreateRouteFilterRule(ctx context.Context, 
 /*
 RouteFilterRulesApiService Bulk RFRules
 This API provides capability to create bulk route filter rules
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routeFilterId Route Filters Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routeFilterId Route Filters Id
+ * @param optional nil or *RouteFilterRulesApiCreateRouteFilterRulesInBulkOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return GetRouteFilterRulesResponse
 */
-func (a *RouteFilterRulesApiService) CreateRouteFilterRulesInBulk(ctx context.Context, body RouteFilterRulesPostRequest, routeFilterId string) (GetRouteFilterRulesResponse, *http.Response, error) {
+
+type RouteFilterRulesApiCreateRouteFilterRulesInBulkOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFilterRulesApiService) CreateRouteFilterRulesInBulk(ctx context.Context, body RouteFilterRulesPostRequest, routeFilterId string, localVarOptionals *RouteFilterRulesApiCreateRouteFilterRulesInBulkOpts) (GetRouteFilterRulesResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -221,6 +250,15 @@ func (a *RouteFilterRulesApiService) CreateRouteFilterRulesInBulk(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -273,13 +311,23 @@ func (a *RouteFilterRulesApiService) CreateRouteFilterRulesInBulk(ctx context.Co
 /*
 RouteFilterRulesApiService DeleteRFRule
 This API provides capability to delete a Route Filter Rule
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-  - @param routeFilterRuleId Route  Filter  Rules Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param routeFilterRuleId Route  Filter  Rules Id
+ * @param optional nil or *RouteFilterRulesApiDeleteRouteFilterRuleByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFilterRulesData
 */
-func (a *RouteFilterRulesApiService) DeleteRouteFilterRuleByUuid(ctx context.Context, routeFilterId string, routeFilterRuleId string) (RouteFilterRulesData, *http.Response, error) {
+
+type RouteFilterRulesApiDeleteRouteFilterRuleByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFilterRulesApiService) DeleteRouteFilterRuleByUuid(ctx context.Context, routeFilterId string, routeFilterRuleId string, localVarOptionals *RouteFilterRulesApiDeleteRouteFilterRuleByUuidOpts) (RouteFilterRulesData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -313,6 +361,15 @@ func (a *RouteFilterRulesApiService) DeleteRouteFilterRuleByUuid(ctx context.Con
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -423,13 +480,23 @@ func (a *RouteFilterRulesApiService) DeleteRouteFilterRuleByUuid(ctx context.Con
 /*
 RouteFilterRulesApiService GetRFRule By UUID
 This API provides capability to view a Route Filter Rule by UUID
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-  - @param routeFilterRuleId Route  Filter  Rules Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param routeFilterRuleId Route  Filter  Rules Id
+ * @param optional nil or *RouteFilterRulesApiGetRouteFilterRuleByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFilterRulesData
 */
-func (a *RouteFilterRulesApiService) GetRouteFilterRuleByUuid(ctx context.Context, routeFilterId string, routeFilterRuleId string) (RouteFilterRulesData, *http.Response, error) {
+
+type RouteFilterRulesApiGetRouteFilterRuleByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFilterRulesApiService) GetRouteFilterRuleByUuid(ctx context.Context, routeFilterId string, routeFilterRuleId string, localVarOptionals *RouteFilterRulesApiGetRouteFilterRuleByUuidOpts) (RouteFilterRulesData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -463,6 +530,15 @@ func (a *RouteFilterRulesApiService) GetRouteFilterRuleByUuid(ctx context.Contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -573,14 +649,22 @@ func (a *RouteFilterRulesApiService) GetRouteFilterRuleByUuid(ctx context.Contex
 /*
 RouteFilterRulesApiService Get Change By ID
 This API provides capability to retrieve a specific Route Filter Rule&#x27;s Changes
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-  - @param routeFilterRuleId Route  Filter  Rules Id
-  - @param changeId Route Filter Rule Change UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param routeFilterRuleId Route  Filter  Rules Id
+ * @param changeId Route Filter Rule Change UUID
+ * @param optional nil or *RouteFilterRulesApiGetRouteFilterRuleChangeByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return RouteFilterRulesChangeData
 */
-func (a *RouteFilterRulesApiService) GetRouteFilterRuleChangeByUuid(ctx context.Context, routeFilterId string, routeFilterRuleId string, changeId string) (RouteFilterRulesChangeData, *http.Response, error) {
+
+type RouteFilterRulesApiGetRouteFilterRuleChangeByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *RouteFilterRulesApiService) GetRouteFilterRuleChangeByUuid(ctx context.Context, routeFilterId string, routeFilterRuleId string, changeId string, localVarOptionals *RouteFilterRulesApiGetRouteFilterRuleChangeByUuidOpts) (RouteFilterRulesChangeData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -615,6 +699,12 @@ func (a *RouteFilterRulesApiService) GetRouteFilterRuleChangeByUuid(ctx context.
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -719,14 +809,18 @@ This API provides capability to retrieve all of a Route Filter Rule&#x27;s Chang
  * @param routeFilterId Route Filters Id
  * @param routeFilterRuleId Route  Filter  Rules Id
  * @param optional nil or *RouteFilterRulesApiGetRouteFilterRuleChangesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return RouteFilterRulesChangeDataResponse
 */
 
 type RouteFilterRulesApiGetRouteFilterRuleChangesOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *RouteFilterRulesApiService) GetRouteFilterRuleChanges(ctx context.Context, routeFilterId string, routeFilterRuleId string, localVarOptionals *RouteFilterRulesApiGetRouteFilterRuleChangesOpts) (RouteFilterRulesChangeDataResponse, *http.Response, error) {
@@ -769,6 +863,12 @@ func (a *RouteFilterRulesApiService) GetRouteFilterRuleChanges(ctx context.Conte
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -872,14 +972,20 @@ This API provides capability to get all Route Filters Rules for Fabric
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param routeFilterId Route Filters Id
  * @param optional nil or *RouteFilterRulesApiGetRouteFilterRulesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return GetRouteFilterRulesResponse
 */
 
 type RouteFilterRulesApiGetRouteFilterRulesOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *RouteFilterRulesApiService) GetRouteFilterRules(ctx context.Context, routeFilterId string, localVarOptionals *RouteFilterRulesApiGetRouteFilterRulesOpts) (GetRouteFilterRulesResponse, *http.Response, error) {
@@ -921,6 +1027,15 @@ func (a *RouteFilterRulesApiService) GetRouteFilterRules(ctx context.Context, ro
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1021,20 +1136,30 @@ func (a *RouteFilterRulesApiService) GetRouteFilterRules(ctx context.Context, ro
 /*
 RouteFilterRulesApiService PatchRFilterRule
 This API provides capability to partially update a Route Filter Rule
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routeFilterId Route Filters Id
-  - @param routeFilterRuleId Route  Filter  Rules Id
-
-@return RouteFiltersData
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routeFilterId Route Filters Id
+ * @param routeFilterRuleId Route  Filter  Rules Id
+ * @param optional nil or *RouteFilterRulesApiPatchRouteFilterRuleByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+@return RouteFilterRulesData
 */
-func (a *RouteFilterRulesApiService) PatchRouteFilterRuleByUuid(ctx context.Context, body []RouteFilterChangePrefixMatch, routeFilterId string, routeFilterRuleId string) (RouteFiltersData, *http.Response, error) {
+
+type RouteFilterRulesApiPatchRouteFilterRuleByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFilterRulesApiService) PatchRouteFilterRuleByUuid(ctx context.Context, body []RouteFilterRulesPatchRequestItem, routeFilterId string, routeFilterRuleId string, localVarOptionals *RouteFilterRulesApiPatchRouteFilterRuleByUuidOpts) (RouteFilterRulesData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
-		localVarReturnValue RouteFiltersData
+		localVarReturnValue RouteFilterRulesData
 	)
 
 	// create path and map variables
@@ -1062,6 +1187,15 @@ func (a *RouteFilterRulesApiService) PatchRouteFilterRuleByUuid(ctx context.Cont
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1096,7 +1230,7 @@ func (a *RouteFilterRulesApiService) PatchRouteFilterRuleByUuid(ctx context.Cont
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 202 {
-			var v RouteFiltersData
+			var v RouteFilterRulesData
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1174,14 +1308,24 @@ func (a *RouteFilterRulesApiService) PatchRouteFilterRuleByUuid(ctx context.Cont
 /*
 RouteFilterRulesApiService ReplaceRFRule
 This API provides capability to replace a Route Filter Rule completely
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routeFilterId Route Filters Id
-  - @param routeFilterRuleId Route  Filter  Rules Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routeFilterId Route Filters Id
+ * @param routeFilterRuleId Route  Filter  Rules Id
+ * @param optional nil or *RouteFilterRulesApiReplaceRouteFilterRuleByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFilterRulesData
 */
-func (a *RouteFilterRulesApiService) ReplaceRouteFilterRuleByUuid(ctx context.Context, body RouteFilterRulesBase, routeFilterId string, routeFilterRuleId string) (RouteFilterRulesData, *http.Response, error) {
+
+type RouteFilterRulesApiReplaceRouteFilterRuleByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFilterRulesApiService) ReplaceRouteFilterRuleByUuid(ctx context.Context, body RouteFilterRulesBase, routeFilterId string, routeFilterRuleId string, localVarOptionals *RouteFilterRulesApiReplaceRouteFilterRuleByUuidOpts) (RouteFilterRulesData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Put")
 		localVarPostBody    interface{}
@@ -1215,6 +1359,15 @@ func (a *RouteFilterRulesApiService) ReplaceRouteFilterRuleByUuid(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

@@ -15,4 +15,5 @@ type NetworkScope string
 const (
 	REGIONAL_NetworkScope NetworkScope = "REGIONAL"
 	GLOBAL_NetworkScope   NetworkScope = "GLOBAL"
+	LOCAL_NetworkScope    NetworkScope = "LOCAL"
 )

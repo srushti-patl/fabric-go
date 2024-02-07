@@ -15,4 +15,5 @@ type ServiceProfileTypeEnum string
 const (
 	L2_PROFILE_ServiceProfileTypeEnum ServiceProfileTypeEnum = "L2_PROFILE"
 	L3_PROFILE_ServiceProfileTypeEnum ServiceProfileTypeEnum = "L3_PROFILE"
+	IA_PROFILE_ServiceProfileTypeEnum ServiceProfileTypeEnum = "IA_PROFILE"
 )

@@ -11,12 +11,12 @@ package v4
 // EPT service instance
 type PrecisionTimeServiceRequest struct {
 	// Indicate the entity is EPT service
-	Type_                string                 `json:"type"`
-	Name                 string                 `json:"name"`
-	Description          string                 `json:"description,omitempty"`
-	Package_             *PackageRequest        `json:"package"`
-	Connections          []FabricConnectionUuid `json:"connections"`
-	Ipv4                 *Ipv4                  `json:"ipv4"`
-	AdvanceConfiguration *AdvanceConfiguration  `json:"advanceConfiguration,omitempty"`
-	Project              *Project               `json:"project,omitempty"`
+	Type_                string                       `json:"type"`
+	Name                 string                       `json:"name"`
+	Description          string                       `json:"description,omitempty"`
+	Package_             *PrecisionTimePackageRequest `json:"package"`
+	Connections          []FabricConnectionUuid       `json:"connections"`
+	Ipv4                 *Ipv4                        `json:"ipv4"`
+	AdvanceConfiguration *AdvanceConfiguration        `json:"advanceConfiguration,omitempty"`
+	Project              *Project                     `json:"project,omitempty"`
 }

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Type_** | **string** | Indicate the entity is EPT service | [default to null]
 **Name** | **string** |  | [default to null]
 **Description** | **string** |  | [optional] [default to null]
-**Package_** | [***PackageRequest**](packageRequest.md) |  | [default to null]
+**Package_** | [***PrecisionTimePackageRequest**](precisionTimePackageRequest.md) |  | [default to null]
 **Connections** | [**[]FabricConnectionUuid**](fabricConnectionUuid.md) |  | [default to null]
 **Ipv4** | [***Ipv4**](ipv4.md) |  | [default to null]
 **AdvanceConfiguration** | [***AdvanceConfiguration**](advanceConfiguration.md) |  | [optional] [default to null]

@@ -17,12 +17,13 @@ type RouteFiltersData struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	// Customer-provided connection description
-	Description          string                        `json:"description,omitempty"`
-	State                *RouteFilterState             `json:"state,omitempty"`
-	Change               *RouteFiltersChange           `json:"change,omitempty"`
-	NotMatchedRuleAction string                        `json:"notMatchedRuleAction,omitempty"`
-	ConnectionsCount     int32                         `json:"connectionsCount,omitempty"`
-	Project              *AllOfRouteFiltersDataProject `json:"project,omitempty"`
+	Description          string                   `json:"description,omitempty"`
+	State                *RouteFilterState        `json:"state,omitempty"`
+	Change               *RouteFiltersChange      `json:"change,omitempty"`
+	NotMatchedRuleAction string                   `json:"notMatchedRuleAction,omitempty"`
+	ConnectionsCount     int32                    `json:"connectionsCount,omitempty"`
+	RulesCount           int32                    `json:"rulesCount,omitempty"`
+	Project              *RouteFiltersDataProject `json:"project,omitempty"`
 	// Preferences for notifications on route filter configuration or status changes
 	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
 	Changelog     *Changelog               `json:"changelog,omitempty"`

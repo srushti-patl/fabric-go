@@ -12,6 +12,8 @@ package v4
 type AllOfServiceProfileAccount struct {
 	// Account number
 	AccountNumber int64 `json:"accountNumber,omitempty"`
+	// Account ReferenceId
+	AccountReferenceId string `json:"accountReferenceId,omitempty"`
 	// Account name
 	AccountName string `json:"accountName,omitempty"`
 	// Customer organization identifier

@@ -21,8 +21,10 @@ type Network struct {
 	// Network URI
 	Href string `json:"href"`
 	// Equinix-assigned network identifier
-	Uuid  string        `json:"uuid"`
-	State *NetworkState `json:"state"`
+	Uuid string `json:"uuid"`
+	// Equinix-assigned platform connection identifier
+	PlatformUuid string        `json:"platformUuid,omitempty"`
+	State        *NetworkState `json:"state"`
 	// number of connections created on the network
 	ConnectionsCount float64                  `json:"connectionsCount,omitempty"`
 	Account          *SimplifiedAccount       `json:"account,omitempty"`

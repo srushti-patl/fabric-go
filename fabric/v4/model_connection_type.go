@@ -22,4 +22,5 @@ const (
 	EVPLAN_VC_ConnectionType     ConnectionType = "EVPLAN_VC"
 	EPLAN_VC_ConnectionType      ConnectionType = "EPLAN_VC"
 	IPWAN_VC_ConnectionType      ConnectionType = "IPWAN_VC"
+	IA_VC_ConnectionType         ConnectionType = "IA_VC"
 )

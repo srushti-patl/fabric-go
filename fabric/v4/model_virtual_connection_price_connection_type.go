@@ -22,4 +22,5 @@ const (
 	EVPLAN_VC_VirtualConnectionPriceConnectionType     VirtualConnectionPriceConnectionType = "EVPLAN_VC"
 	EPLAN_VC_VirtualConnectionPriceConnectionType      VirtualConnectionPriceConnectionType = "EPLAN_VC"
 	IPWAN_VC_VirtualConnectionPriceConnectionType      VirtualConnectionPriceConnectionType = "IPWAN_VC"
+	IA_VC_VirtualConnectionPriceConnectionType         VirtualConnectionPriceConnectionType = "IA_VC"
 )

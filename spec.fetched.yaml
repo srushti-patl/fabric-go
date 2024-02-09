@@ -16,7 +16,7 @@ info:
   license:
     name: Equinix Inc
     url: https://developer.equinix.com/agreement
-  version: '4.11.30'
+  version: 4.11.34
 externalDocs:
   description: Find more information on Equinix Developer Portal
   url: https://developer.equinix.com
@@ -12867,6 +12867,7 @@ components:
         - EVPLAN_VC
         - EPLAN_VC
         - IPWAN_VC
+        - IA_VC
     Order:
       type: object
       properties:
@@ -15384,6 +15385,7 @@ components:
         - EVPLAN_VC
         - EPLAN_VC
         - IPWAN_VC
+        - IA_VC
     VirtualConnectionPriceASide:
       type: object
       properties:
@@ -16669,9 +16671,8 @@ components:
               uuid: 20d32a80-0d61-4333-bc03-707b591ae2f4
             linkProtocol:
               type: QINQ
-              vlanSTag: 300
-              vlanCTagMin: 100
-              vlanCTagMax: 109
+              vlanCTag: 300
+              vlanSTag: 301
         order:
           purchaseOrderNumber: 1-129105284100
         notifications:

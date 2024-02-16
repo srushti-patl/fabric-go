@@ -14,7 +14,7 @@ type Code string
 // List of code
 const (
 	LAB_Code      Code = "LAB"
-	BASIC_Code    Code = "BASIC"
+	ADVANCED_Code Code = "ADVANCED"
 	STANDARD_Code Code = "STANDARD"
 	PREMIUM_Code  Code = "PREMIUM"
 )

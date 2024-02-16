@@ -8,8 +8,12 @@
  */
 package v4
 
-// EPT Package Request
-type PackageRequest struct {
-	Href string `json:"href,omitempty"`
-	Code string `json:"code"`
+// Route Filter Rule change operation data
+type RouteFilterRulesPatchRequestItem struct {
+	// Handy shortcut for operation name
+	Op string `json:"op"`
+	// path to change
+	Path string `json:"path"`
+	// new value for updated parameter
+	Value *interface{} `json:"value"`
 }

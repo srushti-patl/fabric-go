@@ -8,13 +8,6 @@
  */
 package v4
 
-// LinkProtocolRequestType : Type of Link Protocol
-type LinkProtocolRequestType string
-
-// List of LinkProtocolRequestType
-const (
-	UNTAGGED_LinkProtocolRequestType LinkProtocolRequestType = "UNTAGGED"
-	DOT1_Q_LinkProtocolRequestType   LinkProtocolRequestType = "DOT1Q"
-	QINQ_LinkProtocolRequestType     LinkProtocolRequestType = "QINQ"
-	VXLAN_LinkProtocolRequestType    LinkProtocolRequestType = "VXLAN"
-)
+type RouteFiltersSearchBaseFilter struct {
+	And []RouteFiltersSearchFilterItem `json:"and,omitempty"`
+}

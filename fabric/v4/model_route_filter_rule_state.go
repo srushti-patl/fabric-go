@@ -8,13 +8,16 @@
  */
 package v4
 
-// LinkProtocolRequestType : Type of Link Protocol
-type LinkProtocolRequestType string
+// RouteFilterRuleState : Route Filter Rule status
+type RouteFilterRuleState string
 
-// List of LinkProtocolRequestType
+// List of RouteFilterRuleState
 const (
-	UNTAGGED_LinkProtocolRequestType LinkProtocolRequestType = "UNTAGGED"
-	DOT1_Q_LinkProtocolRequestType   LinkProtocolRequestType = "DOT1Q"
-	QINQ_LinkProtocolRequestType     LinkProtocolRequestType = "QINQ"
-	VXLAN_LinkProtocolRequestType    LinkProtocolRequestType = "VXLAN"
+	PROVISIONING_RouteFilterRuleState      RouteFilterRuleState = "PROVISIONING"
+	REPROVISIONING_RouteFilterRuleState    RouteFilterRuleState = "REPROVISIONING"
+	DEPROVISIONING_RouteFilterRuleState    RouteFilterRuleState = "DEPROVISIONING"
+	PROVISIONED_RouteFilterRuleState       RouteFilterRuleState = "PROVISIONED"
+	DEPROVISIONED_RouteFilterRuleState     RouteFilterRuleState = "DEPROVISIONED"
+	NOT_PROVISIONED_RouteFilterRuleState   RouteFilterRuleState = "NOT_PROVISIONED"
+	NOT_DEPROVISIONED_RouteFilterRuleState RouteFilterRuleState = "NOT_DEPROVISIONED"
 )

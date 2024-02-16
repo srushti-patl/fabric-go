@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PatchRouteFilterRuleByUuid**
-> RouteFiltersData PatchRouteFilterRuleByUuid(ctx, body, routeFilterId, routeFilterRuleId)
+> RouteFilterRulesData PatchRouteFilterRuleByUuid(ctx, body, routeFilterId, routeFilterRuleId)
 PatchRFilterRule
 
 This API provides capability to partially update a Route Filter Rule
@@ -247,13 +247,13 @@ This API provides capability to partially update a Route Filter Rule
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**[]RouteFilterChangePrefixMatch**](RouteFilterChangePrefixMatch.md)|  | 
+  **body** | [**[]RouteFilterRulesPatchRequestItem**](RouteFilterRulesPatchRequestItem.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **routeFilterRuleId** | [**string**](.md)| Route  Filter  Rules Id | 
 
 ### Return type
 
-[**RouteFiltersData**](RouteFiltersData.md)
+[**RouteFilterRulesData**](RouteFilterRulesData.md)
 
 ### Authorization
 

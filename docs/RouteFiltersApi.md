@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**GetRouteFilterChanges**](RouteFiltersApi.md#GetRouteFilterChanges) | **Get** /fabric/v4/routeFilters/{routeFilterId}/changes | Get All Changes
 [**GetRouteFilterConnections**](RouteFiltersApi.md#GetRouteFilterConnections) | **Get** /fabric/v4/routeFilters/{routeFilterId}/connections | Get Connections
 [**PatchRouteFilterByUuid**](RouteFiltersApi.md#PatchRouteFilterByUuid) | **Patch** /fabric/v4/routeFilters/{routeFilterId} | Patch Route Filter
-[**ReplaceRouteFilterByUuid**](RouteFiltersApi.md#ReplaceRouteFilterByUuid) | **Put** /fabric/v4/routeFilters/{routeFilterId} | Replace Route Filter
+[**SearchRouteFilters**](RouteFiltersApi.md#SearchRouteFilters) | **Post** /fabric/v4/routeFilters/search | Search Route Filters
 
 # **AttachConnectionRouteFilter**
 > ConnectionRouteFilterData AttachConnectionRouteFilter(ctx, body, routeFilterId, connectionId)
@@ -322,7 +322,7 @@ This API provides capability to partially update a Route Filter
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**[]ConnectionChangeOperation**](ConnectionChangeOperation.md)|  | 
+  **body** | [**[]RouteFiltersPatchRequestItem**](RouteFiltersPatchRequestItem.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
 
 ### Return type
@@ -340,23 +340,22 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ReplaceRouteFilterByUuid**
-> RouteFiltersData ReplaceRouteFilterByUuid(ctx, body, routeFilterId)
-Replace Route Filter
+# **SearchRouteFilters**
+> RouteFiltersSearchResponse SearchRouteFilters(ctx, body)
+Search Route Filters
 
-This API provides capability to replace a Route Filter completely
+This API provides capability to search Route Filters
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**RouteFiltersBase**](RouteFiltersBase.md)|  | 
-  **routeFilterId** | [**string**](.md)| Route Filters Id | 
+  **body** | [**RouteFiltersSearchBase**](RouteFiltersSearchBase.md)|  | 
 
 ### Return type
 
-[**RouteFiltersData**](RouteFiltersData.md)
+[**RouteFiltersSearchResponse**](RouteFiltersSearchResponse.md)
 
 ### Authorization
 

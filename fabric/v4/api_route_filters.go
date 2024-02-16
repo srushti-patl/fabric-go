@@ -1523,7 +1523,7 @@ This API provides capability to partially update a Route Filter
 
 @return RouteFiltersData
 */
-func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, body []ConnectionChangeOperation, routeFilterId string) (RouteFiltersData, *http.Response, error) {
+func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, body []RouteFiltersPatchRequestItem, routeFilterId string) (RouteFiltersData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1666,26 +1666,24 @@ func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, bod
 }
 
 /*
-RouteFiltersApiService Replace Route Filter
-This API provides capability to replace a Route Filter completely
+RouteFiltersApiService Search Route Filters
+This API provides capability to search Route Filters
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param body
-  - @param routeFilterId Route Filters Id
 
-@return RouteFiltersData
+@return RouteFiltersSearchResponse
 */
-func (a *RouteFiltersApiService) ReplaceRouteFilterByUuid(ctx context.Context, body RouteFiltersBase, routeFilterId string) (RouteFiltersData, *http.Response, error) {
+func (a *RouteFiltersApiService) SearchRouteFilters(ctx context.Context, body RouteFiltersSearchBase) (RouteFiltersSearchResponse, *http.Response, error) {
 	var (
-		localVarHttpMethod  = strings.ToUpper("Put")
+		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
-		localVarReturnValue RouteFiltersData
+		localVarReturnValue RouteFiltersSearchResponse
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/fabric/v4/routeFilters/{routeFilterId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"routeFilterId"+"}", fmt.Sprintf("%v", routeFilterId), -1)
+	localVarPath := a.client.cfg.BasePath + "/fabric/v4/routeFilters/search"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1740,8 +1738,8 @@ func (a *RouteFiltersApiService) ReplaceRouteFilterByUuid(ctx context.Context, b
 			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
-		if localVarHttpResponse.StatusCode == 202 {
-			var v RouteFiltersData
+		if localVarHttpResponse.StatusCode == 200 {
+			var v RouteFiltersSearchResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -18,8 +18,8 @@ type PrecisionTimeServiceCreateResponse struct {
 	Name        string `json:"name,omitempty"`
 	Description string `json:"description,omitempty"`
 	// indicate service state
-	State    string           `json:"state"`
-	Package_ *PackageResponse `json:"package"`
+	State    string                        `json:"state"`
+	Package_ *PrecisionTimePackageResponse `json:"package"`
 	// fabric l2 connections used for the ept service
 	Connections          []FabricConnectionUuid `json:"connections,omitempty"`
 	Ipv4                 *Ipv4                  `json:"ipv4"`

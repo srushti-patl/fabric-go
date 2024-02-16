@@ -8,12 +8,8 @@
  */
 package v4
 
-// Route Filter Rule change operation data
-type RouteFilterChangePrefixMatch struct {
-	// Handy shortcut for operation name
-	Op string `json:"op"`
-	// path to change
-	Path string `json:"path"`
-	// new value for updated parameter
-	Value *interface{} `json:"value"`
+type RouteFiltersSearchFilterItem struct {
+	Property string   `json:"property,omitempty"`
+	Operator string   `json:"operator,omitempty"`
+	Values   []string `json:"values,omitempty"`
 }

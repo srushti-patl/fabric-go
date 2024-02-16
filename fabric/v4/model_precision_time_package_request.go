@@ -8,9 +8,8 @@
  */
 package v4
 
-type AllOfRouteFiltersDataProject struct {
-	// Subscriber-assigned project ID
-	ProjectId string `json:"projectId"`
-	// Project URI
+// EPT Package Request
+type PrecisionTimePackageRequest struct {
 	Href string `json:"href,omitempty"`
+	Code string `json:"code"`
 }

@@ -8,13 +8,9 @@
  */
 package v4
 
-// LinkProtocolRequestType : Type of Link Protocol
-type LinkProtocolRequestType string
-
-// List of LinkProtocolRequestType
-const (
-	UNTAGGED_LinkProtocolRequestType LinkProtocolRequestType = "UNTAGGED"
-	DOT1_Q_LinkProtocolRequestType   LinkProtocolRequestType = "DOT1Q"
-	QINQ_LinkProtocolRequestType     LinkProtocolRequestType = "QINQ"
-	VXLAN_LinkProtocolRequestType    LinkProtocolRequestType = "VXLAN"
-)
+type RouteFiltersDataProject struct {
+	// Subscriber-assigned project ID
+	ProjectId string `json:"projectId"`
+	// Project URI
+	Href string `json:"href,omitempty"`
+}

@@ -1,10 +1,10 @@
-# PackageRequest
+# RouteFiltersSearchResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Href** | **string** |  | [optional] [default to null]
-**Code** | **string** |  | [default to null]
+**Pagination** | [***Pagination**](Pagination.md) |  | [optional] [default to null]
+**Data** | [**[]RouteFiltersData**](RouteFiltersData.md) | List of Route Filters | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,10 +8,8 @@
  */
 package v4
 
-// Additional information
-type AdditionalInfo struct {
-	// Key
-	Key string `json:"key,omitempty"`
-	// Value
-	Value string `json:"value,omitempty"`
+type RouteFiltersSearchBase struct {
+	Filter     *RouteFiltersSearchBaseFilter `json:"filter,omitempty"`
+	Pagination *Pagination                   `json:"pagination,omitempty"`
+	Sort       []SortItem                    `json:"sort,omitempty"`
 }

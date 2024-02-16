@@ -8,13 +8,12 @@
  */
 package v4
 
-// LinkProtocolRequestType : Type of Link Protocol
-type LinkProtocolRequestType string
-
-// List of LinkProtocolRequestType
-const (
-	UNTAGGED_LinkProtocolRequestType LinkProtocolRequestType = "UNTAGGED"
-	DOT1_Q_LinkProtocolRequestType   LinkProtocolRequestType = "DOT1Q"
-	QINQ_LinkProtocolRequestType     LinkProtocolRequestType = "QINQ"
-	VXLAN_LinkProtocolRequestType    LinkProtocolRequestType = "VXLAN"
-)
+// Route Filter change operation data
+type RouteFiltersPatchRequestItem struct {
+	// Handy shortcut for operation name
+	Op string `json:"op"`
+	// path to change
+	Path string `json:"path"`
+	// new value for updated parameter
+	Value *interface{} `json:"value"`
+}

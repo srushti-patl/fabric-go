@@ -1,10 +1,11 @@
-# SubInterface
+# RouteFiltersPatchRequestItem
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | name of subinterafce of a port | [optional] [default to null]
-**Unit** | **int32** |  | [optional] [default to null]
+**Op** | **string** | Handy shortcut for operation name | [default to null]
+**Path** | **string** | path to change | [default to null]
+**Value** | [***interface{}**](interface{}.md) | new value for updated parameter | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

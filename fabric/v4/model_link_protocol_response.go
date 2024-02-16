@@ -10,20 +10,22 @@ package v4
 
 // Link Protocol response
 type LinkProtocolResponse struct {
+	// LinkProtocol URI
+	Href string `json:"href,omitempty"`
 	// Equinix-assigned network identifier
-	Uuid           string                    `json:"uuid,omitempty"`
-	State          *LinkProtocolState        `json:"state,omitempty"`
-	Type_          *LinkProtocolRequestType  `json:"type,omitempty"`
-	VlanTag        int32                     `json:"vlanTag,omitempty"`
-	VlanTagMin     int32                     `json:"vlanTagMin,omitempty"`
-	VlanTagMax     int32                     `json:"vlanTagMax,omitempty"`
-	VlanSTag       int32                     `json:"vlanSTag,omitempty"`
-	VlanCTag       int32                     `json:"vlanCTag,omitempty"`
-	VlanCTagMin    int32                     `json:"vlanCTagMin,omitempty"`
-	VlanCTagMax    int32                     `json:"vlanCTagMax,omitempty"`
-	SubInterface   *SubInterface             `json:"subInterface,omitempty"`
-	AdditionalInfo []AdditionalInfo          `json:"additionalInfo,omitempty"`
-	Connection     *LinkProtocolConnection   `json:"connection,omitempty"`
-	ServiceToken   *LinkProtocolServiceToken `json:"serviceToken,omitempty"`
-	ChangeLog      *Changelog                `json:"changeLog,omitempty"`
+	Uuid         string                    `json:"uuid,omitempty"`
+	State        *LinkProtocolState        `json:"state,omitempty"`
+	Type_        *LinkProtocolRequestType  `json:"type,omitempty"`
+	VlanTag      int32                     `json:"vlanTag,omitempty"`
+	Vni          int32                     `json:"vni,omitempty"`
+	VlanTagMin   int32                     `json:"vlanTagMin,omitempty"`
+	VlanTagMax   int32                     `json:"vlanTagMax,omitempty"`
+	VlanSTag     int32                     `json:"vlanSTag,omitempty"`
+	VlanCTag     int32                     `json:"vlanCTag,omitempty"`
+	VlanCTagMin  int32                     `json:"vlanCTagMin,omitempty"`
+	VlanCTagMax  int32                     `json:"vlanCTagMax,omitempty"`
+	SubInterface *SubInterface             `json:"subInterface,omitempty"`
+	Asset        *LinkProtocolConnection   `json:"asset,omitempty"`
+	ServiceToken *LinkProtocolServiceToken `json:"serviceToken,omitempty"`
+	ChangeLog    *Changelog                `json:"changeLog,omitempty"`
 }

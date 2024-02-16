@@ -12,7 +12,8 @@ Name | Type | Description | Notes
 **Change** | [***RouteFiltersChange**](RouteFiltersChange.md) |  | [optional] [default to null]
 **NotMatchedRuleAction** | **string** |  | [optional] [default to null]
 **ConnectionsCount** | **int32** |  | [optional] [default to null]
-**Project** | [***AllOfRouteFiltersDataProject**](AllOfRouteFiltersDataProject.md) |  | [optional] [default to null]
+**RulesCount** | **int32** |  | [optional] [default to null]
+**Project** | [***RouteFiltersDataProject**](RouteFiltersData_project.md) |  | [optional] [default to null]
 **Notifications** | [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on route filter configuration or status changes | [optional] [default to null]
 **Changelog** | [***Changelog**](Changelog.md) |  | [optional] [default to null]
 

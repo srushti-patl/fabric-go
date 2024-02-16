@@ -10,8 +10,6 @@ package v4
 
 // Sub Interface information
 type SubInterface struct {
-	// type of connection vlan
-	Type_ string `json:"type,omitempty"`
 	// name of subinterafce of a port
 	Name string `json:"name,omitempty"`
 	Unit int32  `json:"unit,omitempty"`

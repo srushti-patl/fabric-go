@@ -17,7 +17,8 @@ type RouteFilterRulesData struct {
 	Uuid string `json:"uuid,omitempty"`
 	Name string `json:"name,omitempty"`
 	// Customer-provided Route Filter Rule description
-	Description string `json:"description,omitempty"`
+	Description string                `json:"description,omitempty"`
+	State       *RouteFilterRuleState `json:"state,omitempty"`
 	// prefix matching operator
 	PrefixMatch string                  `json:"prefixMatch,omitempty"`
 	Change      *RouteFilterRulesChange `json:"change,omitempty"`

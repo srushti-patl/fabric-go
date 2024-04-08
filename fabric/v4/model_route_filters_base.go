@@ -10,11 +10,9 @@ package v4
 
 type RouteFiltersBase struct {
 	// Route Filter type
-	Type_ string `json:"type,omitempty"`
-	Name  string `json:"name,omitempty"`
+	Type_ string `json:"type"`
+	Name  string `json:"name"`
 	// Customer-provided connection description
 	Description string   `json:"description,omitempty"`
-	Project     *Project `json:"project,omitempty"`
-	// Preferences for notifications on route filter configuration or status changes
-	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
+	Project     *Project `json:"project"`
 }

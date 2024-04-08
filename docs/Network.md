@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Notifications** | [**[]SimplifiedNotification**](SimplifiedNotification.md) | Preferences for notifications on network configuration or status changes | [default to null]
 **Href** | **string** | Network URI | [default to null]
 **Uuid** | **string** | Equinix-assigned network identifier | [default to null]
+**PlatformUuid** | **string** | Equinix-assigned platform connection identifier | [optional] [default to null]
 **State** | [***NetworkState**](NetworkState.md) |  | [default to null]
 **ConnectionsCount** | **float64** | number of connections created on the network | [optional] [default to null]
 **Account** | [***SimplifiedAccount**](SimplifiedAccount.md) |  | [optional] [default to null]

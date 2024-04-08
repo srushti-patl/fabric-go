@@ -11,6 +11,8 @@ package v4
 type Order struct {
 	// Purchase order number
 	PurchaseOrderNumber string `json:"purchaseOrderNumber,omitempty"`
+	// Customer reference number
+	CustomerReferenceNumber string `json:"customerReferenceNumber,omitempty"`
 	// Billing tier for connection bandwidth
 	BillingTier string `json:"billingTier,omitempty"`
 	// Order Identification

@@ -10,5 +10,5 @@ package v4
 
 type ConnectionRouteFiltersBase struct {
 	// Route Filter direction to attach to a connection
-	Direction string `json:"direction,omitempty"`
+	Direction string `json:"direction"`
 }

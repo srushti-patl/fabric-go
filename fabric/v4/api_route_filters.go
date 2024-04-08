@@ -31,14 +31,24 @@ type RouteFiltersApiService service
 /*
 RouteFiltersApiService Attach Route Filter
 This API provides capability to attach a Route Filter to a Connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routeFilterId Route Filters Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routeFilterId Route Filters Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RouteFiltersApiAttachConnectionRouteFilterOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return ConnectionRouteFilterData
 */
-func (a *RouteFiltersApiService) AttachConnectionRouteFilter(ctx context.Context, body ConnectionRouteFiltersBase, routeFilterId string, connectionId string) (ConnectionRouteFilterData, *http.Response, error) {
+
+type RouteFiltersApiAttachConnectionRouteFilterOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) AttachConnectionRouteFilter(ctx context.Context, body ConnectionRouteFiltersBase, routeFilterId string, connectionId string, localVarOptionals *RouteFiltersApiAttachConnectionRouteFilterOpts) (ConnectionRouteFilterData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Put")
 		localVarPostBody    interface{}
@@ -72,6 +82,15 @@ func (a *RouteFiltersApiService) AttachConnectionRouteFilter(ctx context.Context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -184,12 +203,22 @@ func (a *RouteFiltersApiService) AttachConnectionRouteFilter(ctx context.Context
 /*
 RouteFiltersApiService Create Route Filters
 This API provides capability to create a Route Filter
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *RouteFiltersApiCreateRouteFilterOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFiltersData
 */
-func (a *RouteFiltersApiService) CreateRouteFilter(ctx context.Context, body RouteFiltersBase) (RouteFiltersData, *http.Response, error) {
+
+type RouteFiltersApiCreateRouteFilterOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) CreateRouteFilter(ctx context.Context, body RouteFiltersBase, localVarOptionals *RouteFiltersApiCreateRouteFilterOpts) (RouteFiltersData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -221,6 +250,15 @@ func (a *RouteFiltersApiService) CreateRouteFilter(ctx context.Context, body Rou
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -333,12 +371,22 @@ func (a *RouteFiltersApiService) CreateRouteFilter(ctx context.Context, body Rou
 /*
 RouteFiltersApiService Delete Route Filter
 This API provides capability to delete a Route Filter
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param optional nil or *RouteFiltersApiDeleteRouteFilterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFiltersData
 */
-func (a *RouteFiltersApiService) DeleteRouteFilterByUuid(ctx context.Context, routeFilterId string) (RouteFiltersData, *http.Response, error) {
+
+type RouteFiltersApiDeleteRouteFilterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) DeleteRouteFilterByUuid(ctx context.Context, routeFilterId string, localVarOptionals *RouteFiltersApiDeleteRouteFilterByUuidOpts) (RouteFiltersData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -371,6 +419,15 @@ func (a *RouteFiltersApiService) DeleteRouteFilterByUuid(ctx context.Context, ro
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -481,13 +538,23 @@ func (a *RouteFiltersApiService) DeleteRouteFilterByUuid(ctx context.Context, ro
 /*
 RouteFiltersApiService Detach Route Filter
 This API provides capability to detach a Route Filter from a Connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RouteFiltersApiDetachConnectionRouteFilterOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return ConnectionRouteFilterData
 */
-func (a *RouteFiltersApiService) DetachConnectionRouteFilter(ctx context.Context, routeFilterId string, connectionId string) (ConnectionRouteFilterData, *http.Response, error) {
+
+type RouteFiltersApiDetachConnectionRouteFilterOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) DetachConnectionRouteFilter(ctx context.Context, routeFilterId string, connectionId string, localVarOptionals *RouteFiltersApiDetachConnectionRouteFilterOpts) (ConnectionRouteFilterData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -521,6 +588,15 @@ func (a *RouteFiltersApiService) DetachConnectionRouteFilter(ctx context.Context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -631,13 +707,23 @@ func (a *RouteFiltersApiService) DetachConnectionRouteFilter(ctx context.Context
 /*
 RouteFiltersApiService Get Route Filter
 This API provides capability to view a specific Route Filter attached to a Connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RouteFiltersApiGetConnectionRouteFilterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return ConnectionRouteFilterData
 */
-func (a *RouteFiltersApiService) GetConnectionRouteFilterByUuid(ctx context.Context, routeFilterId string, connectionId string) (ConnectionRouteFilterData, *http.Response, error) {
+
+type RouteFiltersApiGetConnectionRouteFilterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) GetConnectionRouteFilterByUuid(ctx context.Context, routeFilterId string, connectionId string, localVarOptionals *RouteFiltersApiGetConnectionRouteFilterByUuidOpts) (ConnectionRouteFilterData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -671,6 +757,15 @@ func (a *RouteFiltersApiService) GetConnectionRouteFilterByUuid(ctx context.Cont
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -781,12 +876,22 @@ func (a *RouteFiltersApiService) GetConnectionRouteFilterByUuid(ctx context.Cont
 /*
 RouteFiltersApiService Get All RouteFilters
 This API provides capability to view all Route Filters attached to a Connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param connectionId Connection Id
+ * @param optional nil or *RouteFiltersApiGetConnectionRouteFiltersOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return GetAllConnectionRouteFiltersResponse
 */
-func (a *RouteFiltersApiService) GetConnectionRouteFilters(ctx context.Context, connectionId string) (GetAllConnectionRouteFiltersResponse, *http.Response, error) {
+
+type RouteFiltersApiGetConnectionRouteFiltersOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) GetConnectionRouteFilters(ctx context.Context, connectionId string, localVarOptionals *RouteFiltersApiGetConnectionRouteFiltersOpts) (GetAllConnectionRouteFiltersResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -819,6 +924,15 @@ func (a *RouteFiltersApiService) GetConnectionRouteFilters(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -929,12 +1043,22 @@ func (a *RouteFiltersApiService) GetConnectionRouteFilters(ctx context.Context, 
 /*
 RouteFiltersApiService Get Filter By UUID
 This API provides capability to view a Route Filter by UUID
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param optional nil or *RouteFiltersApiGetRouteFilterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFiltersData
 */
-func (a *RouteFiltersApiService) GetRouteFilterByUuid(ctx context.Context, routeFilterId string) (RouteFiltersData, *http.Response, error) {
+
+type RouteFiltersApiGetRouteFilterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) GetRouteFilterByUuid(ctx context.Context, routeFilterId string, localVarOptionals *RouteFiltersApiGetRouteFilterByUuidOpts) (RouteFiltersData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -967,6 +1091,15 @@ func (a *RouteFiltersApiService) GetRouteFilterByUuid(ctx context.Context, route
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1077,13 +1210,21 @@ func (a *RouteFiltersApiService) GetRouteFilterByUuid(ctx context.Context, route
 /*
 RouteFiltersApiService Get Change By ID
 This API provides capability to retrieve a specific Route Filter&#x27;s Changes
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-  - @param changeId Routing Protocol Change UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param changeId Routing Protocol Change UUID
+ * @param optional nil or *RouteFiltersApiGetRouteFilterChangeByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return RouteFilterChangeData
 */
-func (a *RouteFiltersApiService) GetRouteFilterChangeByUuid(ctx context.Context, routeFilterId string, changeId string) (RouteFilterChangeData, *http.Response, error) {
+
+type RouteFiltersApiGetRouteFilterChangeByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *RouteFiltersApiService) GetRouteFilterChangeByUuid(ctx context.Context, routeFilterId string, changeId string, localVarOptionals *RouteFiltersApiGetRouteFilterChangeByUuidOpts) (RouteFilterChangeData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1117,6 +1258,12 @@ func (a *RouteFiltersApiService) GetRouteFilterChangeByUuid(ctx context.Context,
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1220,14 +1367,18 @@ This API provides capability to retrieve all of a Route Filter&#x27;s Changes
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param routeFilterId Route Filters Id
  * @param optional nil or *RouteFiltersApiGetRouteFilterChangesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return RouteFilterChangeDataResponse
 */
 
 type RouteFiltersApiGetRouteFilterChangesOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *RouteFiltersApiService) GetRouteFilterChanges(ctx context.Context, routeFilterId string, localVarOptionals *RouteFiltersApiGetRouteFilterChangesOpts) (RouteFilterChangeDataResponse, *http.Response, error) {
@@ -1269,6 +1420,12 @@ func (a *RouteFiltersApiService) GetRouteFilterChanges(ctx context.Context, rout
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1369,12 +1526,22 @@ func (a *RouteFiltersApiService) GetRouteFilterChanges(ctx context.Context, rout
 /*
 RouteFiltersApiService Get Connections
 This API provides capability to view all Connections using the Route Filter
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routeFilterId Route Filters Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routeFilterId Route Filters Id
+ * @param optional nil or *RouteFiltersApiGetRouteFilterConnectionsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return GetRouteFilterGetConnectionsResponse
 */
-func (a *RouteFiltersApiService) GetRouteFilterConnections(ctx context.Context, routeFilterId string) (GetRouteFilterGetConnectionsResponse, *http.Response, error) {
+
+type RouteFiltersApiGetRouteFilterConnectionsOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) GetRouteFilterConnections(ctx context.Context, routeFilterId string, localVarOptionals *RouteFiltersApiGetRouteFilterConnectionsOpts) (GetRouteFilterGetConnectionsResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1407,6 +1574,15 @@ func (a *RouteFiltersApiService) GetRouteFilterConnections(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1517,13 +1693,23 @@ func (a *RouteFiltersApiService) GetRouteFilterConnections(ctx context.Context, 
 /*
 RouteFiltersApiService Patch Route Filter
 This API provides capability to partially update a Route Filter
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routeFilterId Route Filters Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routeFilterId Route Filters Id
+ * @param optional nil or *RouteFiltersApiPatchRouteFilterByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFiltersData
 */
-func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, body []RouteFiltersPatchRequestItem, routeFilterId string) (RouteFiltersData, *http.Response, error) {
+
+type RouteFiltersApiPatchRouteFilterByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, body []RouteFiltersPatchRequestItem, routeFilterId string, localVarOptionals *RouteFiltersApiPatchRouteFilterByUuidOpts) (RouteFiltersData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1556,6 +1742,15 @@ func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, bod
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1668,12 +1863,22 @@ func (a *RouteFiltersApiService) PatchRouteFilterByUuid(ctx context.Context, bod
 /*
 RouteFiltersApiService Search Route Filters
 This API provides capability to search Route Filters
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *RouteFiltersApiSearchRouteFiltersOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RouteFiltersSearchResponse
 */
-func (a *RouteFiltersApiService) SearchRouteFilters(ctx context.Context, body RouteFiltersSearchBase) (RouteFiltersSearchResponse, *http.Response, error) {
+
+type RouteFiltersApiSearchRouteFiltersOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RouteFiltersApiService) SearchRouteFilters(ctx context.Context, body RouteFiltersSearchBase, localVarOptionals *RouteFiltersApiSearchRouteFiltersOpts) (RouteFiltersSearchResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -1705,6 +1910,15 @@ func (a *RouteFiltersApiService) SearchRouteFilters(ctx context.Context, body Ro
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

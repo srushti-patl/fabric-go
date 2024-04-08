@@ -8,12 +8,7 @@
  */
 package v4
 
-// Fabric Cloud Router Package Type
-type CloudRouterPackageType struct {
-	// Fabric Cloud Router URI
-	Href string `json:"href,omitempty"`
-	// Cloud Router package type
-	Type_ string `json:"type,omitempty"`
-	// Cloud Router package code
-	Code string `json:"code"`
+type AdditionalInfoProperty struct {
+	Key   string `json:"key,omitempty"`
+	Value string `json:"value,omitempty"`
 }

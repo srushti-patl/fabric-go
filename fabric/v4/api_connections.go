@@ -31,12 +31,24 @@ type ConnectionsApiService service
 /*
 ConnectionsApiService Create Connection
 This API provides capability to create user&#x27;s virtual connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *ConnectionsApiCreateConnectionOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+     * @param "AccountSubCustomerUcmId" (optional.String) -  subCustomerUcmId
 @return Connection
 */
-func (a *ConnectionsApiService) CreateConnection(ctx context.Context, body ConnectionPostRequest) (Connection, *http.Response, error) {
+
+type ConnectionsApiCreateConnectionOpts struct {
+	XCORRELATIONID          optional.String
+	XAUTHUSERNAME           optional.String
+	XSOURCE                 optional.String
+	AccountSubCustomerUcmId optional.String
+}
+
+func (a *ConnectionsApiService) CreateConnection(ctx context.Context, body ConnectionPostRequest, localVarOptionals *ConnectionsApiCreateConnectionOpts) (Connection, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -52,6 +64,9 @@ func (a *ConnectionsApiService) CreateConnection(ctx context.Context, body Conne
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.AccountSubCustomerUcmId.IsSet() {
+		localVarQueryParams.Add("account.subCustomerUcmId", parameterToString(localVarOptionals.AccountSubCustomerUcmId.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
 
@@ -68,6 +83,15 @@ func (a *ConnectionsApiService) CreateConnection(ctx context.Context, body Conne
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -160,13 +184,23 @@ func (a *ConnectionsApiService) CreateConnection(ctx context.Context, body Conne
 /*
 ConnectionsApiService Connection Actions
 This API provides capability to accept/reject user&#x27;s virtual connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param connectionId Connection Id
+ * @param optional nil or *ConnectionsApiCreateConnectionActionOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return ConnectionAction
 */
-func (a *ConnectionsApiService) CreateConnectionAction(ctx context.Context, body ConnectionActionRequest, connectionId string) (ConnectionAction, *http.Response, error) {
+
+type ConnectionsApiCreateConnectionActionOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *ConnectionsApiService) CreateConnectionAction(ctx context.Context, body ConnectionActionRequest, connectionId string, localVarOptionals *ConnectionsApiCreateConnectionActionOpts) (ConnectionAction, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -199,6 +233,15 @@ func (a *ConnectionsApiService) CreateConnectionAction(ctx context.Context, body
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -289,14 +332,189 @@ func (a *ConnectionsApiService) CreateConnectionAction(ctx context.Context, body
 }
 
 /*
+ConnectionsApiService Bulk Connections
+This API provides capability to create bulk virtual connections
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *ConnectionsApiCreateConnectionsInBulkOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+     * @param "AccountSubCustomerUcmId" (optional.String) -  subCustomerUcmId
+@return ConnectionBulk
+*/
+
+type ConnectionsApiCreateConnectionsInBulkOpts struct {
+	XCORRELATIONID          optional.String
+	XAUTHUSERNAME           optional.String
+	XSOURCE                 optional.String
+	AccountSubCustomerUcmId optional.String
+}
+
+func (a *ConnectionsApiService) CreateConnectionsInBulk(ctx context.Context, body ConnectionBulkPostRequest, localVarOptionals *ConnectionsApiCreateConnectionsInBulkOpts) (ConnectionBulk, *http.Response, error) {
+	var (
+		localVarHttpMethod  = strings.ToUpper("Post")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
+		localVarReturnValue ConnectionBulk
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/fabric/v4/connections/bulk"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.AccountSubCustomerUcmId.IsSet() {
+		localVarQueryParams.Add("account.subCustomerUcmId", parameterToString(localVarOptionals.AccountSubCustomerUcmId.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
+	}
+	// body params
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body:  localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v ConnectionBulk
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 401 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 403 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 404 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 500 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+
+/*
 ConnectionsApiService Delete by ID
 Delete Connection by ID
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param connectionId Connection UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param connectionId Connection UUID
+ * @param optional nil or *ConnectionsApiDeleteConnectionByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+     * @param "AccountSubCustomerUcmId" (optional.String) -  subCustomerUcmId
 @return Connection
 */
-func (a *ConnectionsApiService) DeleteConnectionByUuid(ctx context.Context, connectionId string) (Connection, *http.Response, error) {
+
+type ConnectionsApiDeleteConnectionByUuidOpts struct {
+	XCORRELATIONID          optional.String
+	XAUTHUSERNAME           optional.String
+	XSOURCE                 optional.String
+	AccountSubCustomerUcmId optional.String
+}
+
+func (a *ConnectionsApiService) DeleteConnectionByUuid(ctx context.Context, connectionId string, localVarOptionals *ConnectionsApiDeleteConnectionByUuidOpts) (Connection, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -313,6 +531,9 @@ func (a *ConnectionsApiService) DeleteConnectionByUuid(ctx context.Context, conn
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.AccountSubCustomerUcmId.IsSet() {
+		localVarQueryParams.Add("account.subCustomerUcmId", parameterToString(localVarOptionals.AccountSubCustomerUcmId.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -329,6 +550,15 @@ func (a *ConnectionsApiService) DeleteConnectionByUuid(ctx context.Context, conn
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -432,12 +662,16 @@ The API provides capability to get user&#x27;s virtual connection details (Servi
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param connectionId Connection Id
  * @param optional nil or *ConnectionsApiGetConnectionByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
      * @param "Direction" (optional.Interface of ConnectionDirection) -  Connection Direction
 @return Connection
 */
 
 type ConnectionsApiGetConnectionByUuidOpts struct {
-	Direction optional.Interface
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	Direction      optional.Interface
 }
 
 func (a *ConnectionsApiService) GetConnectionByUuid(ctx context.Context, connectionId string, localVarOptionals *ConnectionsApiGetConnectionByUuidOpts) (Connection, *http.Response, error) {
@@ -477,6 +711,157 @@ func (a *ConnectionsApiService) GetConnectionByUuid(ctx context.Context, connect
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body:  localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v Connection
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 403 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 404 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+
+/*
+ConnectionsApiService Replace by ID
+The API provides capability to replace virtual connection details
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param connectionId Connection UUID
+ * @param optional nil or *ConnectionsApiPutConnectionByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+     * @param "AccountSubCustomerUcmId" (optional.String) -  subCustomerUcmId
+@return Connection
+*/
+
+type ConnectionsApiPutConnectionByUuidOpts struct {
+	XCORRELATIONID          optional.String
+	XAUTHUSERNAME           optional.String
+	XSOURCE                 optional.String
+	AccountSubCustomerUcmId optional.String
+}
+
+func (a *ConnectionsApiService) PutConnectionByUuid(ctx context.Context, body ConnectionPutRequest, connectionId string, localVarOptionals *ConnectionsApiPutConnectionByUuidOpts) (Connection, *http.Response, error) {
+	var (
+		localVarHttpMethod  = strings.ToUpper("Put")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
+		localVarReturnValue Connection
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/fabric/v4/connections/{connectionId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", fmt.Sprintf("%v", connectionId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.AccountSubCustomerUcmId.IsSet() {
+		localVarQueryParams.Add("account.subCustomerUcmId", parameterToString(localVarOptionals.AccountSubCustomerUcmId.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
+	}
+	// body params
+	localVarPostBody = &body
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -556,12 +941,20 @@ func (a *ConnectionsApiService) GetConnectionByUuid(ctx context.Context, connect
 /*
 ConnectionsApiService Search connections
 The API provides capability to get list of user&#x27;s virtual connections using search criteria, including optional filtering, pagination and sorting
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *ConnectionsApiSearchConnectionsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ConnectionSearchResponse
 */
-func (a *ConnectionsApiService) SearchConnections(ctx context.Context, body SearchRequest) (ConnectionSearchResponse, *http.Response, error) {
+
+type ConnectionsApiSearchConnectionsOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ConnectionsApiService) SearchConnections(ctx context.Context, body SearchRequest, localVarOptionals *ConnectionsApiSearchConnectionsOpts) (ConnectionSearchResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -593,6 +986,12 @@ func (a *ConnectionsApiService) SearchConnections(ctx context.Context, body Sear
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -685,13 +1084,25 @@ func (a *ConnectionsApiService) SearchConnections(ctx context.Context, body Sear
 /*
 ConnectionsApiService Update by ID
 Update Connection by ID
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param connectionId Connection Id
+ * @param optional nil or *ConnectionsApiUpdateConnectionByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+     * @param "AccountSubCustomerUcmId" (optional.String) -  subCustomerUcmId
 @return Connection
 */
-func (a *ConnectionsApiService) UpdateConnectionByUuid(ctx context.Context, body []ConnectionChangeOperation, connectionId string) (Connection, *http.Response, error) {
+
+type ConnectionsApiUpdateConnectionByUuidOpts struct {
+	XCORRELATIONID          optional.String
+	XAUTHUSERNAME           optional.String
+	XSOURCE                 optional.String
+	AccountSubCustomerUcmId optional.String
+}
+
+func (a *ConnectionsApiService) UpdateConnectionByUuid(ctx context.Context, body []ConnectionChangeOperation, connectionId string, localVarOptionals *ConnectionsApiUpdateConnectionByUuidOpts) (Connection, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -708,6 +1119,9 @@ func (a *ConnectionsApiService) UpdateConnectionByUuid(ctx context.Context, body
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.AccountSubCustomerUcmId.IsSet() {
+		localVarQueryParams.Add("account.subCustomerUcmId", parameterToString(localVarOptionals.AccountSubCustomerUcmId.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json-patch+json"}
 
@@ -724,6 +1138,15 @@ func (a *ConnectionsApiService) UpdateConnectionByUuid(ctx context.Context, body
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -804,14 +1227,182 @@ func (a *ConnectionsApiService) UpdateConnectionByUuid(ctx context.Context, body
 }
 
 /*
+ConnectionsApiService Update Connections
+The API provides bulk capability for Admin users to update virtual connection details (for e.g., Aside Access Points) by it&#x27;s UUID
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param uuid Connection UUID
+ * @param optional nil or *ConnectionsApiUpdateConnectionsByUuidsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
+@return Connection
+*/
+
+type ConnectionsApiUpdateConnectionsByUuidsOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *ConnectionsApiService) UpdateConnectionsByUuids(ctx context.Context, body []ConnectionChangeOperation, uuid string, localVarOptionals *ConnectionsApiUpdateConnectionsByUuidsOpts) (Connection, *http.Response, error) {
+	var (
+		localVarHttpMethod  = strings.ToUpper("Patch")
+		localVarPostBody    interface{}
+		localVarFileName    string
+		localVarFileBytes   []byte
+		localVarReturnValue Connection
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/fabric/v4/connections/bulk"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	localVarQueryParams.Add("uuid", parameterToString(uuid, ""))
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/json-patch+json"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
+	}
+	// body params
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	localVarHttpResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		if err == nil {
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body:  localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v Connection
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 401 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 403 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 404 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 500 {
+			var v []ModelError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+
+/*
 ConnectionsApiService Validate Connection
 This API provides capability to validate by auth key
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *ConnectionsApiValidateConnectionsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ConnectionResponse
 */
-func (a *ConnectionsApiService) ValidateConnections(ctx context.Context, body ValidateRequest) (ConnectionResponse, *http.Response, error) {
+
+type ConnectionsApiValidateConnectionsOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ConnectionsApiService) ValidateConnections(ctx context.Context, body ValidateRequest, localVarOptionals *ConnectionsApiValidateConnectionsOpts) (ConnectionResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -843,6 +1434,12 @@ func (a *ConnectionsApiService) ValidateConnections(ctx context.Context, body Va
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

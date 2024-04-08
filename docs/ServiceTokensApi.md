@@ -16,7 +16,7 @@ Method | HTTP request | Description
 > ServiceToken CreateServiceToken(ctx, body)
 Create Service Token
 
-Create Service Tokens generates Equinix Fabric? service tokens. These tokens authorize users to access protected resources and services.
+Create Service Tokens generates Equinix Fabric™ service tokens. These tokens authorize users to access protected resources and services.
 
 ### Required Parameters
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateServiceTokenAction**
-> ServiceToken CreateServiceTokenAction(ctx, body, serviceTokenId)
+> ServiceToken CreateServiceTokenAction(ctx, body, serviceTokenId, optional)
 ServiceToken Actions
 
 This API provides capability to accept/reject user's servicetokens
@@ -53,6 +53,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**ServiceTokenActionRequest**](ServiceTokenActionRequest.md)|  | 
   **serviceTokenId** | [**string**](.md)| Service Token UUID | 
+ **optional** | ***ServiceTokensApiCreateServiceTokenActionOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceTokensApiCreateServiceTokenActionOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -161,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SearchServiceTokens**
-> ServiceTokens SearchServiceTokens(ctx, body)
+> ServiceTokens SearchServiceTokens(ctx, body, optional)
 Search servicetokens
 
 The API provides capability to get list of user's servicetokens using search criteria, including optional filtering, pagination and sorting
@@ -172,6 +183,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**ServiceTokenSearchRequest**](ServiceTokenSearchRequest.md)|  | 
+ **optional** | ***ServiceTokensApiSearchServiceTokensOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceTokensApiSearchServiceTokensOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 
@@ -189,7 +209,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateServiceTokenByUuid**
-> ServiceToken UpdateServiceTokenByUuid(ctx, body, serviceTokenId)
+> ServiceToken UpdateServiceTokenByUuid(ctx, body, serviceTokenId, optional)
 Update Token By ID
 
 This API provides capability to update user's Service Token
@@ -201,6 +221,16 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**[]ServiceTokenChangeOperation**](ServiceTokenChangeOperation.md)|  | 
   **serviceTokenId** | [**string**](.md)| Service Token UUID | 
+ **optional** | ***ServiceTokensApiUpdateServiceTokenByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ServiceTokensApiUpdateServiceTokenByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 

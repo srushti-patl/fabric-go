@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**SearchRouteFilters**](RouteFiltersApi.md#SearchRouteFilters) | **Post** /fabric/v4/routeFilters/search | Search Route Filters
 
 # **AttachConnectionRouteFilter**
-> ConnectionRouteFilterData AttachConnectionRouteFilter(ctx, body, routeFilterId, connectionId)
+> ConnectionRouteFilterData AttachConnectionRouteFilter(ctx, body, routeFilterId, connectionId, optional)
 Attach Route Filter
 
 This API provides capability to attach a Route Filter to a Connection
@@ -31,6 +31,18 @@ Name | Type | Description  | Notes
   **body** | [**ConnectionRouteFiltersBase**](ConnectionRouteFiltersBase.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **connectionId** | [**string**](.md)| Connection Id | 
+ **optional** | ***RouteFiltersApiAttachConnectionRouteFilterOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiAttachConnectionRouteFilterOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -48,7 +60,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateRouteFilter**
-> RouteFiltersData CreateRouteFilter(ctx, body)
+> RouteFiltersData CreateRouteFilter(ctx, body, optional)
 Create Route Filters
 
 This API provides capability to create a Route Filter
@@ -59,6 +71,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**RouteFiltersBase**](RouteFiltersBase.md)|  | 
+ **optional** | ***RouteFiltersApiCreateRouteFilterOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiCreateRouteFilterOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -76,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteRouteFilterByUuid**
-> RouteFiltersData DeleteRouteFilterByUuid(ctx, routeFilterId)
+> RouteFiltersData DeleteRouteFilterByUuid(ctx, routeFilterId, optional)
 Delete Route Filter
 
 This API provides capability to delete a Route Filter
@@ -87,6 +109,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
+ **optional** | ***RouteFiltersApiDeleteRouteFilterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiDeleteRouteFilterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -104,7 +136,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DetachConnectionRouteFilter**
-> ConnectionRouteFilterData DetachConnectionRouteFilter(ctx, routeFilterId, connectionId)
+> ConnectionRouteFilterData DetachConnectionRouteFilter(ctx, routeFilterId, connectionId, optional)
 Detach Route Filter
 
 This API provides capability to detach a Route Filter from a Connection
@@ -116,6 +148,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **connectionId** | [**string**](.md)| Connection Id | 
+ **optional** | ***RouteFiltersApiDetachConnectionRouteFilterOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiDetachConnectionRouteFilterOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -133,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetConnectionRouteFilterByUuid**
-> ConnectionRouteFilterData GetConnectionRouteFilterByUuid(ctx, routeFilterId, connectionId)
+> ConnectionRouteFilterData GetConnectionRouteFilterByUuid(ctx, routeFilterId, connectionId, optional)
 Get Route Filter
 
 This API provides capability to view a specific Route Filter attached to a Connection
@@ -145,6 +188,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **connectionId** | [**string**](.md)| Connection Id | 
+ **optional** | ***RouteFiltersApiGetConnectionRouteFilterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiGetConnectionRouteFilterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -162,7 +216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetConnectionRouteFilters**
-> GetAllConnectionRouteFiltersResponse GetConnectionRouteFilters(ctx, connectionId)
+> GetAllConnectionRouteFiltersResponse GetConnectionRouteFilters(ctx, connectionId, optional)
 Get All RouteFilters
 
 This API provides capability to view all Route Filters attached to a Connection
@@ -173,6 +227,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **connectionId** | [**string**](.md)| Connection Id | 
+ **optional** | ***RouteFiltersApiGetConnectionRouteFiltersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiGetConnectionRouteFiltersOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -190,7 +254,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRouteFilterByUuid**
-> RouteFiltersData GetRouteFilterByUuid(ctx, routeFilterId)
+> RouteFiltersData GetRouteFilterByUuid(ctx, routeFilterId, optional)
 Get Filter By UUID
 
 This API provides capability to view a Route Filter by UUID
@@ -201,6 +265,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
+ **optional** | ***RouteFiltersApiGetRouteFilterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiGetRouteFilterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -218,7 +292,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRouteFilterChangeByUuid**
-> RouteFilterChangeData GetRouteFilterChangeByUuid(ctx, routeFilterId, changeId)
+> RouteFilterChangeData GetRouteFilterChangeByUuid(ctx, routeFilterId, changeId, optional)
 Get Change By ID
 
 This API provides capability to retrieve a specific Route Filter's Changes
@@ -230,6 +304,16 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
   **changeId** | [**string**](.md)| Routing Protocol Change UUID | 
+ **optional** | ***RouteFiltersApiGetRouteFilterChangeByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiGetRouteFilterChangeByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 
@@ -265,6 +349,8 @@ Optional parameters are passed through a pointer to a RouteFiltersApiGetRouteFil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
  **offset** | **optional.Int32**| offset | 
  **limit** | **optional.Int32**| number of records to fetch | 
 
@@ -284,7 +370,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetRouteFilterConnections**
-> GetRouteFilterGetConnectionsResponse GetRouteFilterConnections(ctx, routeFilterId)
+> GetRouteFilterGetConnectionsResponse GetRouteFilterConnections(ctx, routeFilterId, optional)
 Get Connections
 
 This API provides capability to view all Connections using the Route Filter
@@ -295,6 +381,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
+ **optional** | ***RouteFiltersApiGetRouteFilterConnectionsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiGetRouteFilterConnectionsOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
+ **xSOURCE** | **optional.String**| source | 
 
 ### Return type
 
@@ -312,7 +408,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PatchRouteFilterByUuid**
-> RouteFiltersData PatchRouteFilterByUuid(ctx, body, routeFilterId)
+> RouteFiltersData PatchRouteFilterByUuid(ctx, body, routeFilterId, optional)
 Patch Route Filter
 
 This API provides capability to partially update a Route Filter
@@ -324,6 +420,17 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**[]RouteFiltersPatchRequestItem**](RouteFiltersPatchRequestItem.md)|  | 
   **routeFilterId** | [**string**](.md)| Route Filters Id | 
+ **optional** | ***RouteFiltersApiPatchRouteFilterByUuidOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiPatchRouteFilterByUuidOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 
@@ -341,7 +448,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SearchRouteFilters**
-> RouteFiltersSearchResponse SearchRouteFilters(ctx, body)
+> RouteFiltersSearchResponse SearchRouteFilters(ctx, body, optional)
 Search Route Filters
 
 This API provides capability to search Route Filters
@@ -352,6 +459,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**RouteFiltersSearchBase**](RouteFiltersSearchBase.md)|  | 
+ **optional** | ***RouteFiltersApiSearchRouteFiltersOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a RouteFiltersApiSearchRouteFiltersOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
+ **xSOURCE** | **optional.**| source | 
 
 ### Return type
 

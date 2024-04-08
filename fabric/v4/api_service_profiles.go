@@ -30,13 +30,22 @@ type ServiceProfilesApiService service
 
 /*
 ServiceProfilesApiService Create Profile
-Create Service Profile creates Equinix Fabric? Service Profile.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+Create Service Profile creates Equinix Fabric™ Service Profile.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param icVersion api version
+ * @param optional nil or *ServiceProfilesApiCreateServiceProfileOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceProfile
 */
-func (a *ServiceProfilesApiService) CreateServiceProfile(ctx context.Context, body ServiceProfileRequest) (ServiceProfile, *http.Response, error) {
+
+type ServiceProfilesApiCreateServiceProfileOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ServiceProfilesApiService) CreateServiceProfile(ctx context.Context, body ServiceProfileRequest, icVersion string, localVarOptionals *ServiceProfilesApiCreateServiceProfileOpts) (ServiceProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -68,6 +77,13 @@ func (a *ServiceProfilesApiService) CreateServiceProfile(ctx context.Context, bo
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -160,12 +176,21 @@ func (a *ServiceProfilesApiService) CreateServiceProfile(ctx context.Context, bo
 /*
 ServiceProfilesApiService Delete Profile
 delete Service Profile by UUID
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param serviceProfileId Service Profile UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param serviceProfileId Service Profile UUID
+ * @param icVersion api version
+ * @param optional nil or *ServiceProfilesApiDeleteServiceProfileByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceProfile
 */
-func (a *ServiceProfilesApiService) DeleteServiceProfileByUuid(ctx context.Context, serviceProfileId string) (ServiceProfile, *http.Response, error) {
+
+type ServiceProfilesApiDeleteServiceProfileByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ServiceProfilesApiService) DeleteServiceProfileByUuid(ctx context.Context, serviceProfileId string, icVersion string, localVarOptionals *ServiceProfilesApiDeleteServiceProfileByUuidOpts) (ServiceProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -198,6 +223,13 @@ func (a *ServiceProfilesApiService) DeleteServiceProfileByUuid(ctx context.Conte
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -300,16 +332,23 @@ ServiceProfilesApiService Get Profile
 Get service profile by UUID. View Point parameter if set to zSide will give seller&#x27;s view of the profile otherwise buyer&#x27;s view.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param serviceProfileId Service Profile UUID
+ * @param icVersion api version
  * @param optional nil or *ServiceProfilesApiGetServiceProfileByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
      * @param "ViewPoint" (optional.String) -  flips view between buyer and seller representation
+     * @param "Style" (optional.String) -  style
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceProfile
 */
 
 type ServiceProfilesApiGetServiceProfileByUuidOpts struct {
-	ViewPoint optional.String
+	XCORRELATIONID optional.String
+	ViewPoint      optional.String
+	Style          optional.String
+	XAUTHUSERNAME  optional.String
 }
 
-func (a *ServiceProfilesApiService) GetServiceProfileByUuid(ctx context.Context, serviceProfileId string, localVarOptionals *ServiceProfilesApiGetServiceProfileByUuidOpts) (ServiceProfile, *http.Response, error) {
+func (a *ServiceProfilesApiService) GetServiceProfileByUuid(ctx context.Context, serviceProfileId string, icVersion string, localVarOptionals *ServiceProfilesApiGetServiceProfileByUuidOpts) (ServiceProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -329,6 +368,9 @@ func (a *ServiceProfilesApiService) GetServiceProfileByUuid(ctx context.Context,
 	if localVarOptionals != nil && localVarOptionals.ViewPoint.IsSet() {
 		localVarQueryParams.Add("viewPoint", parameterToString(localVarOptionals.ViewPoint.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.Style.IsSet() {
+		localVarQueryParams.Add("style", parameterToString(localVarOptionals.Style.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -345,6 +387,13 @@ func (a *ServiceProfilesApiService) GetServiceProfileByUuid(ctx context.Context,
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -437,18 +486,25 @@ ServiceProfilesApiService Get Profile Metros
 Get service profile metros by UUID.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param serviceProfileId Service Profile UUID
+ * @param icVersion api version
  * @param optional nil or *ServiceProfilesApiGetServiceProfileMetrosByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
+     * @param "Style" (optional.String) -  style
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceMetros
 */
 
 type ServiceProfilesApiGetServiceProfileMetrosByUuidOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
+	Style          optional.String
+	XAUTHUSERNAME  optional.String
 }
 
-func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuid(ctx context.Context, serviceProfileId string, localVarOptionals *ServiceProfilesApiGetServiceProfileMetrosByUuidOpts) (ServiceMetros, *http.Response, error) {
+func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuid(ctx context.Context, serviceProfileId string, icVersion string, localVarOptionals *ServiceProfilesApiGetServiceProfileMetrosByUuidOpts) (ServiceMetros, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -471,6 +527,9 @@ func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuid(ctx context.Co
 	if localVarOptionals != nil && localVarOptionals.Limit.IsSet() {
 		localVarQueryParams.Add("limit", parameterToString(localVarOptionals.Limit.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.Style.IsSet() {
+		localVarQueryParams.Add("style", parameterToString(localVarOptionals.Style.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -487,6 +546,13 @@ func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuid(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -578,20 +644,27 @@ func (a *ServiceProfilesApiService) GetServiceProfileMetrosByUuid(ctx context.Co
 ServiceProfilesApiService Get all Profiles
 The API request returns all Equinix Fabric Service Profiles in accordance with the view point requested.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param icVersion api version
  * @param optional nil or *ServiceProfilesApiGetServiceProfilesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
      * @param "ViewPoint" (optional.String) -  flips view between buyer and seller representation
+     * @param "Style" (optional.String) -  style
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceProfiles
 */
 
 type ServiceProfilesApiGetServiceProfilesOpts struct {
-	Offset    optional.Int32
-	Limit     optional.Int32
-	ViewPoint optional.String
+	XCORRELATIONID optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
+	ViewPoint      optional.String
+	Style          optional.String
+	XAUTHUSERNAME  optional.String
 }
 
-func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context, localVarOptionals *ServiceProfilesApiGetServiceProfilesOpts) (ServiceProfiles, *http.Response, error) {
+func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context, icVersion string, localVarOptionals *ServiceProfilesApiGetServiceProfilesOpts) (ServiceProfiles, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -616,6 +689,9 @@ func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context, loca
 	if localVarOptionals != nil && localVarOptionals.ViewPoint.IsSet() {
 		localVarQueryParams.Add("viewPoint", parameterToString(localVarOptionals.ViewPoint.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.Style.IsSet() {
+		localVarQueryParams.Add("style", parameterToString(localVarOptionals.Style.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -632,6 +708,13 @@ func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context, loca
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -722,14 +805,23 @@ func (a *ServiceProfilesApiService) GetServiceProfiles(ctx context.Context, loca
 /*
 ServiceProfilesApiService Replace Profile
 This API request replaces a service profile definition
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param ifMatch conditional request
-  - @param serviceProfileId Service Profile UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param ifMatch conditional request
+ * @param icVersion api version
+ * @param serviceProfileId Service Profile UUID
+ * @param optional nil or *ServiceProfilesApiPutServiceProfileByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceProfile
 */
-func (a *ServiceProfilesApiService) PutServiceProfileByUuid(ctx context.Context, body ServiceProfileRequest, ifMatch string, serviceProfileId string) (ServiceProfile, *http.Response, error) {
+
+type ServiceProfilesApiPutServiceProfileByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ServiceProfilesApiService) PutServiceProfileByUuid(ctx context.Context, body ServiceProfileRequest, ifMatch string, icVersion string, serviceProfileId string, localVarOptionals *ServiceProfilesApiPutServiceProfileByUuidOpts) (ServiceProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Put")
 		localVarPostBody    interface{}
@@ -764,6 +856,13 @@ func (a *ServiceProfilesApiService) PutServiceProfileByUuid(ctx context.Context,
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarHeaderParams["If-Match"] = parameterToString(ifMatch, "")
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
 	// body params
 	localVarPostBody = &body
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
@@ -867,16 +966,21 @@ ServiceProfilesApiService Profile Search
 Search service profiles by search criteria
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body
+ * @param icVersion api version
  * @param optional nil or *ServiceProfilesApiSearchServiceProfilesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
      * @param "ViewPoint" (optional.String) -  flips view between buyer and seller representation
 @return ServiceProfiles
 */
 
 type ServiceProfilesApiSearchServiceProfilesOpts struct {
-	ViewPoint optional.String
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	ViewPoint      optional.String
 }
 
-func (a *ServiceProfilesApiService) SearchServiceProfiles(ctx context.Context, body ServiceProfileSearchRequest, localVarOptionals *ServiceProfilesApiSearchServiceProfilesOpts) (ServiceProfiles, *http.Response, error) {
+func (a *ServiceProfilesApiService) SearchServiceProfiles(ctx context.Context, body ServiceProfileSearchRequest, icVersion string, localVarOptionals *ServiceProfilesApiSearchServiceProfilesOpts) (ServiceProfiles, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -911,6 +1015,13 @@ func (a *ServiceProfilesApiService) SearchServiceProfiles(ctx context.Context, b
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -993,14 +1104,23 @@ func (a *ServiceProfilesApiService) SearchServiceProfiles(ctx context.Context, b
 /*
 ServiceProfilesApiService Update Profile
 Update Service Profile by UUID
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param ifMatch conditional request
-  - @param serviceProfileId Service Profile UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param ifMatch conditional request
+ * @param icVersion api version
+ * @param serviceProfileId Service Profile UUID
+ * @param optional nil or *ServiceProfilesApiUpdateServiceProfileByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceProfile
 */
-func (a *ServiceProfilesApiService) UpdateServiceProfileByUuid(ctx context.Context, body []JsonPatchOperation, ifMatch string, serviceProfileId string) (ServiceProfile, *http.Response, error) {
+
+type ServiceProfilesApiUpdateServiceProfileByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ServiceProfilesApiService) UpdateServiceProfileByUuid(ctx context.Context, body []JsonPatchOperation, ifMatch string, icVersion string, serviceProfileId string, localVarOptionals *ServiceProfilesApiUpdateServiceProfileByUuidOpts) (ServiceProfile, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1035,6 +1155,13 @@ func (a *ServiceProfilesApiService) UpdateServiceProfileByUuid(ctx context.Conte
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	localVarHeaderParams["If-Match"] = parameterToString(ifMatch, "")
+	localVarHeaderParams["Ic-Version"] = parameterToString(icVersion, "")
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
 	// body params
 	localVarPostBody = &body
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)

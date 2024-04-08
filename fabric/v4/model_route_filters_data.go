@@ -24,7 +24,5 @@ type RouteFiltersData struct {
 	ConnectionsCount     int32                    `json:"connectionsCount,omitempty"`
 	RulesCount           int32                    `json:"rulesCount,omitempty"`
 	Project              *RouteFiltersDataProject `json:"project,omitempty"`
-	// Preferences for notifications on route filter configuration or status changes
-	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
-	Changelog     *Changelog               `json:"changelog,omitempty"`
+	Changelog            *Changelog               `json:"changelog,omitempty"`
 }

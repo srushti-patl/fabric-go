@@ -16,6 +16,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -28,11 +30,19 @@ type HealthApiService service
 /*
 HealthApiService Get service status
 GET All service health statys with an option query parameter to return all Equinix Fabric customer in which the customer has a presence.
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *HealthApiGetStatusOpts - Optional Parameters:
+     * @param "CorrelationId" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return HealthResponse
 */
-func (a *HealthApiService) GetStatus(ctx context.Context) (HealthResponse, *http.Response, error) {
+
+type HealthApiGetStatusOpts struct {
+	CorrelationId optional.String
+	XAUTHUSERNAME optional.String
+}
+
+func (a *HealthApiService) GetStatus(ctx context.Context, localVarOptionals *HealthApiGetStatusOpts) (HealthResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -64,6 +74,12 @@ func (a *HealthApiService) GetStatus(ctx context.Context) (HealthResponse, *http
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.CorrelationId.IsSet() {
+		localVarHeaderParams["Correlation-Id"] = parameterToString(localVarOptionals.CorrelationId.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {

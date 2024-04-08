@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**SearchPorts**](PortsApi.md#SearchPorts) | **Post** /fabric/v4/ports/search | Search ports
 
 # **AddToLag**
-> AllPhysicalPortsResponse AddToLag(ctx, body, portId)
+> AllPhysicalPortsResponse AddToLag(ctx, body, portId, optional)
 Add to Lag
 
 Add Physical Ports to Virtual Port.<font color=\"red\"> <sup color='red'>Preview</sup></font>
@@ -25,6 +25,16 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**BulkPhysicalPort**](BulkPhysicalPort.md)|  | 
   **portId** | [**string**](.md)| Port UUID | 
+ **optional** | ***PortsApiAddToLagOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PortsApiAddToLagOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 
@@ -42,10 +52,10 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateBulkPort**
-> AllPortsResponse CreateBulkPort(ctx, body)
+> AllPortsResponse CreateBulkPort(ctx, body, optional)
 Create Port
 
-Create Port creates Equinix Fabric? Port.<font color=\"red\"> <sup color='red'>Preview</sup></font>
+Create Port creates Equinix Fabric™ Port.<font color=\"red\"> <sup color='red'>Preview</sup></font>
 
 ### Required Parameters
 
@@ -53,6 +63,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**BulkPort**](BulkPort.md)|  | 
+ **optional** | ***PortsApiCreateBulkPortOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PortsApiCreateBulkPortOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 
@@ -70,10 +89,10 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreatePort**
-> Port CreatePort(ctx, body)
+> Port CreatePort(ctx, body, optional)
 Create Port
 
-Creates Equinix Fabric? Port.
+Creates Equinix Fabric™ Port.
 
 ### Required Parameters
 
@@ -81,6 +100,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**Port**](Port.md)|  | 
+ **optional** | ***PortsApiCreatePortOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PortsApiCreatePortOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.**| User name | 
 
 ### Return type
 
@@ -160,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetVlans**
-> LinkProtocolGetResponse GetVlans(ctx, portUuid)
+> LinkProtocolGetResponse GetVlans(ctx, portUuid, optional)
 Get Vlans
 
 The API provides capability to retrieve Vlans for a Port.
@@ -171,6 +199,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **portUuid** | [**string**](.md)| Port UUID | 
+ **optional** | ***PortsApiGetVlansOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PortsApiGetVlansOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.String**| Correlation identifier | 
+ **xAUTHUSERNAME** | **optional.String**| User name | 
 
 ### Return type
 
@@ -188,7 +225,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SearchPorts**
-> AllPortsResponse SearchPorts(ctx, body)
+> AllPortsResponse SearchPorts(ctx, body, optional)
 Search ports
 
 The API provides capability to get list of user's virtual ports using search criteria, including optional filtering, pagination and sorting
@@ -199,6 +236,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**PortV4SearchRequest**](PortV4SearchRequest.md)|  | 
+ **optional** | ***PortsApiSearchPortsOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PortsApiSearchPortsOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xCORRELATIONID** | **optional.**| Correlation identifier | 
 
 ### Return type
 

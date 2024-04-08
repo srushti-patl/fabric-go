@@ -12,6 +12,6 @@ type RouteFilterRulesBase struct {
 	Name string `json:"name,omitempty"`
 	// Customer-provided Route Filter Rule description
 	Description string `json:"description,omitempty"`
-	Prefix      string `json:"prefix,omitempty"`
+	Prefix      string `json:"prefix"`
 	PrefixMatch string `json:"prefixMatch,omitempty"`
 }

@@ -8,7 +8,7 @@
  */
 package v4
 
-// GET Metros retrieves all Equinix? Fabric? metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
+// GET Metros retrieves all Equinix® Fabric™ metros, as well as latency data for each location.This performance data helps network planning engineers and administrators make strategic decisions about port locations and traffic routes.
 type MetroResponse struct {
 	Pagination *Pagination `json:"pagination,omitempty"`
 	// List of Fabric Metros.

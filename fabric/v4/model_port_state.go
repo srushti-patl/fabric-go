@@ -21,4 +21,8 @@ const (
 	DEPROVISIONED_PortState  PortState = "DEPROVISIONED"
 	INACTIVE_PortState       PortState = "INACTIVE"
 	FAILED_PortState         PortState = "FAILED"
+	ADDED_PortState          PortState = "ADDED"
+	DELETED_PortState        PortState = "DELETED"
+	TO_BE_ADDED_PortState    PortState = "TO_BE_ADDED"
+	TO_BE_DELETED_PortState  PortState = "TO_BE_DELETED"
 )

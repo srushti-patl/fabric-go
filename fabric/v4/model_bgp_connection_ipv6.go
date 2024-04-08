@@ -15,4 +15,7 @@ type BgpConnectionIpv6 struct {
 	EquinixPeerIp string `json:"equinixPeerIp,omitempty"`
 	// Admin status for the BGP session
 	Enabled bool `json:"enabled"`
+	// AS path prepend count
+	OutboundASPrependCount int64                   `json:"outboundASPrependCount,omitempty"`
+	Operation              *BgpConnectionOperation `json:"operation,omitempty"`
 }

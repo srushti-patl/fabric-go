@@ -12,12 +12,12 @@ package v4
 type CloudRouter struct {
 	Type_ string `json:"type,omitempty"`
 	// Customer-provided Cloud Router name
-	Name     string                        `json:"name,omitempty"`
-	Location *SimplifiedLocationWithoutIbx `json:"location,omitempty"`
-	Package_ *CloudRouterPackageType       `json:"package,omitempty"`
-	Order    *Order                        `json:"order,omitempty"`
-	Project  *Project                      `json:"project,omitempty"`
-	Account  *SimplifiedAccount            `json:"account,omitempty"`
+	Name     string                         `json:"name,omitempty"`
+	Location *SimplifiedLocationWithoutIbx  `json:"location,omitempty"`
+	Package_ *CloudRouterPostRequestPackage `json:"package,omitempty"`
+	Order    *Order                         `json:"order,omitempty"`
+	Project  *Project                       `json:"project,omitempty"`
+	Account  *SimplifiedAccount             `json:"account,omitempty"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []SimplifiedNotification `json:"notifications,omitempty"`
 	// Cloud Routers URI

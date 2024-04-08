@@ -13,8 +13,19 @@ type SimplifiedLinkProtocol struct {
 	Type_ *LinkProtocolType `json:"type,omitempty"`
 	// vlanTag value specified for DOT1Q connections
 	VlanTag int32 `json:"vlanTag,omitempty"`
+	// vlanTag Min value specified for DOT1Q connections
+	VlanTagMin int32 `json:"vlanTagMin,omitempty"`
+	// vlanTag Max value specified for DOT1Q connections
+	VlanTagMax int32 `json:"vlanTagMax,omitempty"`
 	// vlanSTag value specified for QINQ connections
 	VlanSTag int32 `json:"vlanSTag,omitempty"`
 	// vlanCTag value specified for QINQ connections
 	VlanCTag int32 `json:"vlanCTag,omitempty"`
+	// vlanCTag Minvalue specified for QINQ connections
+	VlanCTagMin int32 `json:"vlanCTagMin,omitempty"`
+	// vlanCTag max value specified for QINQ connections
+	VlanCTagMax int32 `json:"vlanCTagMax,omitempty"`
+	Unit        int32 `json:"unit,omitempty"`
+	Vni         int32 `json:"vni,omitempty"`
+	IntUnit     int32 `json:"intUnit,omitempty"`
 }

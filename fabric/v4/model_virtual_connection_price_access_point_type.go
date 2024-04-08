@@ -13,10 +13,11 @@ type VirtualConnectionPriceAccessPointType string
 
 // List of VirtualConnectionPriceAccessPointType
 const (
-	VD_VirtualConnectionPriceAccessPointType           VirtualConnectionPriceAccessPointType = "VD"
-	SP_VirtualConnectionPriceAccessPointType           VirtualConnectionPriceAccessPointType = "SP"
-	COLO_VirtualConnectionPriceAccessPointType         VirtualConnectionPriceAccessPointType = "COLO"
-	CLOUD_ROUTER_VirtualConnectionPriceAccessPointType VirtualConnectionPriceAccessPointType = "CLOUD_ROUTER"
-	CHAINGROUP_VirtualConnectionPriceAccessPointType   VirtualConnectionPriceAccessPointType = "CHAINGROUP"
-	NETWORK_VirtualConnectionPriceAccessPointType      VirtualConnectionPriceAccessPointType = "NETWORK"
+	VD_VirtualConnectionPriceAccessPointType            VirtualConnectionPriceAccessPointType = "VD"
+	SP_VirtualConnectionPriceAccessPointType            VirtualConnectionPriceAccessPointType = "SP"
+	COLO_VirtualConnectionPriceAccessPointType          VirtualConnectionPriceAccessPointType = "COLO"
+	CLOUD_ROUTER_VirtualConnectionPriceAccessPointType  VirtualConnectionPriceAccessPointType = "CLOUD_ROUTER"
+	CHAINGROUP_VirtualConnectionPriceAccessPointType    VirtualConnectionPriceAccessPointType = "CHAINGROUP"
+	NETWORK_VirtualConnectionPriceAccessPointType       VirtualConnectionPriceAccessPointType = "NETWORK"
+	METAL_NETWORK_VirtualConnectionPriceAccessPointType VirtualConnectionPriceAccessPointType = "METAL_NETWORK"
 )

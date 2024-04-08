@@ -8,16 +8,11 @@
  */
 package v4
 
-// Route Filter change operation data
+// Route Filter Rule change operation data
 type RouteFilterRulesChangeOperation struct {
-	// name of  route filter rule
-	Name string `json:"name"`
-	// cust provided description
-	Description string `json:"description,omitempty"`
-	// type of filter rule
-	Type_ string `json:"type"`
-	// given prefix (does not change)
-	Prefix string `json:"prefix"`
-	// change to be made
-	Action string `json:"action"`
+	// Handy shortcut for operation name
+	Op string `json:"op"`
+	// path inside document leading to updated parameter
+	Path  string                `json:"path"`
+	Value *RouteFilterRulesBase `json:"value"`
 }

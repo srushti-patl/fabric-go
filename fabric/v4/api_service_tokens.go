@@ -30,7 +30,7 @@ type ServiceTokensApiService service
 
 /*
 ServiceTokensApiService Create Service Token
-Create Service Tokens generates Equinix Fabric? service tokens. These tokens authorize users to access protected resources and services.
+Create Service Tokens generates Equinix Fabric™ service tokens. These tokens authorize users to access protected resources and services.
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param body
 
@@ -150,13 +150,23 @@ func (a *ServiceTokensApiService) CreateServiceToken(ctx context.Context, body S
 /*
 ServiceTokensApiService ServiceToken Actions
 This API provides capability to accept/reject user&#x27;s servicetokens
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param serviceTokenId Service Token UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param serviceTokenId Service Token UUID
+ * @param optional nil or *ServiceTokensApiCreateServiceTokenActionOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return ServiceToken
 */
-func (a *ServiceTokensApiService) CreateServiceTokenAction(ctx context.Context, body ServiceTokenActionRequest, serviceTokenId string) (ServiceToken, *http.Response, error) {
+
+type ServiceTokensApiCreateServiceTokenActionOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *ServiceTokensApiService) CreateServiceTokenAction(ctx context.Context, body ServiceTokenActionRequest, serviceTokenId string, localVarOptionals *ServiceTokensApiCreateServiceTokenActionOpts) (ServiceToken, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -189,6 +199,15 @@ func (a *ServiceTokensApiService) CreateServiceTokenAction(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -596,12 +615,20 @@ func (a *ServiceTokensApiService) GetServiceTokens(ctx context.Context, localVar
 /*
 ServiceTokensApiService Search servicetokens
 The API provides capability to get list of user&#x27;s servicetokens using search criteria, including optional filtering, pagination and sorting
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param optional nil or *ServiceTokensApiSearchServiceTokensOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceTokens
 */
-func (a *ServiceTokensApiService) SearchServiceTokens(ctx context.Context, body ServiceTokenSearchRequest) (ServiceTokens, *http.Response, error) {
+
+type ServiceTokensApiSearchServiceTokensOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ServiceTokensApiService) SearchServiceTokens(ctx context.Context, body ServiceTokenSearchRequest, localVarOptionals *ServiceTokensApiSearchServiceTokensOpts) (ServiceTokens, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -633,6 +660,12 @@ func (a *ServiceTokensApiService) SearchServiceTokens(ctx context.Context, body 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -725,13 +758,21 @@ func (a *ServiceTokensApiService) SearchServiceTokens(ctx context.Context, body 
 /*
 ServiceTokensApiService Update Token By ID
 This API provides capability to update user&#x27;s Service Token
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param serviceTokenId Service Token UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param serviceTokenId Service Token UUID
+ * @param optional nil or *ServiceTokensApiUpdateServiceTokenByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ServiceToken
 */
-func (a *ServiceTokensApiService) UpdateServiceTokenByUuid(ctx context.Context, body []ServiceTokenChangeOperation, serviceTokenId string) (ServiceToken, *http.Response, error) {
+
+type ServiceTokensApiUpdateServiceTokenByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *ServiceTokensApiService) UpdateServiceTokenByUuid(ctx context.Context, body []ServiceTokenChangeOperation, serviceTokenId string, localVarOptionals *ServiceTokensApiUpdateServiceTokenByUuidOpts) (ServiceToken, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -764,6 +805,12 @@ func (a *ServiceTokensApiService) UpdateServiceTokenByUuid(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body

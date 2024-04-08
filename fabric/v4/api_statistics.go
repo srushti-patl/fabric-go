@@ -149,7 +149,7 @@ This API provides top utilized service-level traffic metrics so that you can vie
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param metros Two-letter prefix indicating the metropolitan area in which a specified Equinix asset is located.
  * @param optional nil or *StatisticsApiGetPortStatsOpts - Optional Parameters:
-     * @param "Sort" (optional.Interface of Sort) -  Key or set of keys that organizes the search payload by property (such as createdDate or metroCode) or by direction. Ascending (ASC) is the default value. The \&quot;?\&quot; prefix indicates descending (DESC) order.
+     * @param "Sort" (optional.Interface of Sort) -  Key or set of keys that organizes the search payload by property (such as createdDate or metroCode) or by direction. Ascending (ASC) is the default value. The \&quot;‒\&quot; prefix indicates descending (DESC) order.
      * @param "Top" (optional.Interface of int32) -  Filter returning only the specified number of most heavily trafficked ports. The standard value is [1...10], and the default is 5.
      * @param "Duration" (optional.Interface of Duration) -  duration
      * @param "Direction" (optional.Interface of QueryDirection) -  Direction of traffic from the requester&#x27;s viewpoint. The default is outbound.

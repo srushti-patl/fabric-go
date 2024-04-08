@@ -62,13 +62,23 @@ func (v *RoutingProtocolData) UnmarshalJSON(data []byte) error {
 /*
 RoutingProtocolsApiService Create Protocol
 This API provides capability to create Routing Protocol for connections
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiCreateConnectionRoutingProtocolOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RoutingProtocolData
 */
-func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context.Context, body RoutingProtocolBase, connectionId string) (RoutingProtocolData, *http.Response, error) {
+
+type RoutingProtocolsApiCreateConnectionRoutingProtocolOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context.Context, body RoutingProtocolBase, connectionId string, localVarOptionals *RoutingProtocolsApiCreateConnectionRoutingProtocolOpts) (RoutingProtocolData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -101,6 +111,15 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -213,13 +232,23 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocol(ctx context
 /*
 RoutingProtocolsApiService Bulk Create Protocol
 This API provides capability to create Routing Protocol for connections
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiCreateConnectionRoutingProtocolsInBulkOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return GetResponse
 */
-func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocolsInBulk(ctx context.Context, body ConnectionRoutingProtocolPostRequest, connectionId string) (GetResponse, *http.Response, error) {
+
+type RoutingProtocolsApiCreateConnectionRoutingProtocolsInBulkOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocolsInBulk(ctx context.Context, body ConnectionRoutingProtocolPostRequest, connectionId string, localVarOptionals *RoutingProtocolsApiCreateConnectionRoutingProtocolsInBulkOpts) (GetResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -252,6 +281,15 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocolsInBulk(ctx 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -364,13 +402,23 @@ func (a *RoutingProtocolsApiService) CreateConnectionRoutingProtocolsInBulk(ctx 
 /*
 RoutingProtocolsApiService Delete Protocol
 This API provides capability to delete Routing Protocols on virtual connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routingProtocolId Routing Protocol Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routingProtocolId Routing Protocol Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiDeleteConnectionRoutingProtocolByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RoutingProtocolData
 */
-func (a *RoutingProtocolsApiService) DeleteConnectionRoutingProtocolByUuid(ctx context.Context, routingProtocolId string, connectionId string) (RoutingProtocolData, *http.Response, error) {
+
+type RoutingProtocolsApiDeleteConnectionRoutingProtocolByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) DeleteConnectionRoutingProtocolByUuid(ctx context.Context, routingProtocolId string, connectionId string, localVarOptionals *RoutingProtocolsApiDeleteConnectionRoutingProtocolByUuidOpts) (RoutingProtocolData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -404,6 +452,15 @@ func (a *RoutingProtocolsApiService) DeleteConnectionRoutingProtocolByUuid(ctx c
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -518,14 +575,20 @@ This API provides capability to get all BGP actions status
  * @param routingProtocolId Routing Protocol Id
  * @param connectionId Connection Id
  * @param optional nil or *RoutingProtocolsApiGetConnectionRoutingProtocolAllBgpActionsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return BgpActionsBulkData
 */
 
 type RoutingProtocolsApiGetConnectionRoutingProtocolAllBgpActionsOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolAllBgpActions(ctx context.Context, routingProtocolId string, connectionId string, localVarOptionals *RoutingProtocolsApiGetConnectionRoutingProtocolAllBgpActionsOpts) (BgpActionsBulkData, *http.Response, error) {
@@ -568,6 +631,15 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolAllBgpActions(c
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -678,13 +750,23 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolAllBgpActions(c
 /*
 RoutingProtocolsApiService Get Protocol
 This API provides capability to accept/reject user&#x27;s virtual connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param routingProtocolId Routing Protocol Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param routingProtocolId Routing Protocol Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiGetConnectionRoutingProtocolByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RoutingProtocolData
 */
-func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolByUuid(ctx context.Context, routingProtocolId string, connectionId string) (RoutingProtocolData, *http.Response, error) {
+
+type RoutingProtocolsApiGetConnectionRoutingProtocolByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolByUuid(ctx context.Context, routingProtocolId string, connectionId string, localVarOptionals *RoutingProtocolsApiGetConnectionRoutingProtocolByUuidOpts) (RoutingProtocolData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -718,6 +800,15 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolByUuid(ctx cont
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -831,14 +922,20 @@ This API provides capability to get Routing Protocols for connections
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param connectionId Connection Id
  * @param optional nil or *RoutingProtocolsApiGetConnectionRoutingProtocolsOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return GetResponse
 */
 
 type RoutingProtocolsApiGetConnectionRoutingProtocolsOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocols(ctx context.Context, connectionId string, localVarOptionals *RoutingProtocolsApiGetConnectionRoutingProtocolsOpts) (GetResponse, *http.Response, error) {
@@ -880,6 +977,15 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocols(ctx context.C
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -980,14 +1086,22 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocols(ctx context.C
 /*
 RoutingProtocolsApiService Get BGP Action
 This API provides capability to retrieve specific BGP action
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param connectionId Connection Id
-  - @param routingProtocolId Routing Protocol Id
-  - @param actionId BGP Action UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param connectionId Connection Id
+ * @param routingProtocolId Routing Protocol Id
+ * @param actionId BGP Action UUID
+ * @param optional nil or *RoutingProtocolsApiGetConnectionRoutingProtocolsBgpActionByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return BgpActionData
 */
-func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsBgpActionByUuid(ctx context.Context, connectionId string, routingProtocolId string, actionId string) (BgpActionData, *http.Response, error) {
+
+type RoutingProtocolsApiGetConnectionRoutingProtocolsBgpActionByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsBgpActionByUuid(ctx context.Context, connectionId string, routingProtocolId string, actionId string, localVarOptionals *RoutingProtocolsApiGetConnectionRoutingProtocolsBgpActionByUuidOpts) (BgpActionData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1022,6 +1136,12 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsBgpActionByUui
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1122,14 +1242,22 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsBgpActionByUui
 /*
 RoutingProtocolsApiService Get Change By ID
 This API provides capability to retrieve specific Routing Protocol Change
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param connectionId Connection Id
-  - @param routingProtocolId Routing Protocol Id
-  - @param changeId Routing Protocol Change UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param connectionId Connection Id
+ * @param routingProtocolId Routing Protocol Id
+ * @param changeId Routing Protocol Change UUID
+ * @param optional nil or *RoutingProtocolsApiGetConnectionRoutingProtocolsChangeByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return RoutingProtocolChangeData
 */
-func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChangeByUuid(ctx context.Context, connectionId string, routingProtocolId string, changeId string) (RoutingProtocolChangeData, *http.Response, error) {
+
+type RoutingProtocolsApiGetConnectionRoutingProtocolsChangeByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChangeByUuid(ctx context.Context, connectionId string, routingProtocolId string, changeId string, localVarOptionals *RoutingProtocolsApiGetConnectionRoutingProtocolsChangeByUuidOpts) (RoutingProtocolChangeData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1164,6 +1292,12 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChangeByUuid(c
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1268,14 +1402,18 @@ This API provides capability to retrieve user&#x27;s Routing Protocol Changes
  * @param connectionId Connection Id
  * @param routingProtocolId Routing Protocol Id
  * @param optional nil or *RoutingProtocolsApiGetConnectionRoutingProtocolsChangesOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
      * @param "Offset" (optional.Int32) -  offset
      * @param "Limit" (optional.Int32) -  number of records to fetch
 @return RoutingProtocolChangeDataResponse
 */
 
 type RoutingProtocolsApiGetConnectionRoutingProtocolsChangesOpts struct {
-	Offset optional.Int32
-	Limit  optional.Int32
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	Offset         optional.Int32
+	Limit          optional.Int32
 }
 
 func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChanges(ctx context.Context, connectionId string, routingProtocolId string, localVarOptionals *RoutingProtocolsApiGetConnectionRoutingProtocolsChangesOpts) (RoutingProtocolChangeDataResponse, *http.Response, error) {
@@ -1318,6 +1456,12 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChanges(ctx co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1418,14 +1562,24 @@ func (a *RoutingProtocolsApiService) GetConnectionRoutingProtocolsChanges(ctx co
 /*
 RoutingProtocolsApiService Patch Protocol
 This API provides capability to partially update Routing Protocols on a virtual connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routingProtocolId Routing Protocol Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routingProtocolId Routing Protocol Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiPatchConnectionRoutingProtocolByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RoutingProtocolData
 */
-func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx context.Context, body []ConnectionChangeOperation, routingProtocolId string, connectionId string) (RoutingProtocolData, *http.Response, error) {
+
+type RoutingProtocolsApiPatchConnectionRoutingProtocolByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx context.Context, body []ConnectionChangeOperation, routingProtocolId string, connectionId string, localVarOptionals *RoutingProtocolsApiPatchConnectionRoutingProtocolByUuidOpts) (RoutingProtocolData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1459,6 +1613,15 @@ func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1571,14 +1734,24 @@ func (a *RoutingProtocolsApiService) PatchConnectionRoutingProtocolByUuid(ctx co
 /*
 RoutingProtocolsApiService Clear/Reset BGP
 This API provides capability to clear/reset Routing Protocols BGP session
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routingProtocolId Routing Protocol Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routingProtocolId Routing Protocol Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiPostConnectionRoutingProtocolBgpActionByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return BgpActionData
 */
-func (a *RoutingProtocolsApiService) PostConnectionRoutingProtocolBgpActionByUuid(ctx context.Context, body BgpActionRequest, routingProtocolId string, connectionId string) (BgpActionData, *http.Response, error) {
+
+type RoutingProtocolsApiPostConnectionRoutingProtocolBgpActionByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) PostConnectionRoutingProtocolBgpActionByUuid(ctx context.Context, body BgpActionRequest, routingProtocolId string, connectionId string, localVarOptionals *RoutingProtocolsApiPostConnectionRoutingProtocolBgpActionByUuidOpts) (BgpActionData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -1612,6 +1785,15 @@ func (a *RoutingProtocolsApiService) PostConnectionRoutingProtocolBgpActionByUui
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1724,14 +1906,24 @@ func (a *RoutingProtocolsApiService) PostConnectionRoutingProtocolBgpActionByUui
 /*
 RoutingProtocolsApiService Replace Protocol
 This API provides capability to replace complete Routing Protocols on a virtual connection
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routingProtocolId Routing Protocol Id
-  - @param connectionId Connection Id
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routingProtocolId Routing Protocol Id
+ * @param connectionId Connection Id
+ * @param optional nil or *RoutingProtocolsApiReplaceConnectionRoutingProtocolByUuidOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
+     * @param "XSOURCE" (optional.String) -  source
 @return RoutingProtocolData
 */
-func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx context.Context, body RoutingProtocolBase, routingProtocolId string, connectionId string) (RoutingProtocolData, *http.Response, error) {
+
+type RoutingProtocolsApiReplaceConnectionRoutingProtocolByUuidOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+	XSOURCE        optional.String
+}
+
+func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx context.Context, body RoutingProtocolBase, routingProtocolId string, connectionId string, localVarOptionals *RoutingProtocolsApiReplaceConnectionRoutingProtocolByUuidOpts) (RoutingProtocolData, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Put")
 		localVarPostBody    interface{}
@@ -1765,6 +1957,15 @@ func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XSOURCE.IsSet() {
+		localVarHeaderParams["X-SOURCE"] = parameterToString(localVarOptionals.XSOURCE.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
@@ -1877,13 +2078,21 @@ func (a *RoutingProtocolsApiService) ReplaceConnectionRoutingProtocolByUuid(ctx 
 /*
 RoutingProtocolsApiService Validate Subnet
 This API provides capability to validate all subnets associated with any connection in the given FCR
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param body
-  - @param routerId Cloud Router UUID
-
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body
+ * @param routerId Cloud Router UUID
+ * @param optional nil or *RoutingProtocolsApiValidateRoutingProtocolOpts - Optional Parameters:
+     * @param "XCORRELATIONID" (optional.String) -  Correlation identifier
+     * @param "XAUTHUSERNAME" (optional.String) -  User name
 @return ValidateSubnetResponse
 */
-func (a *RoutingProtocolsApiService) ValidateRoutingProtocol(ctx context.Context, body ValidateRequest, routerId string) (ValidateSubnetResponse, *http.Response, error) {
+
+type RoutingProtocolsApiValidateRoutingProtocolOpts struct {
+	XCORRELATIONID optional.String
+	XAUTHUSERNAME  optional.String
+}
+
+func (a *RoutingProtocolsApiService) ValidateRoutingProtocol(ctx context.Context, body ValidateRequest, routerId string, localVarOptionals *RoutingProtocolsApiValidateRoutingProtocolOpts) (ValidateSubnetResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -1916,6 +2125,12 @@ func (a *RoutingProtocolsApiService) ValidateRoutingProtocol(ctx context.Context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if localVarOptionals != nil && localVarOptionals.XCORRELATIONID.IsSet() {
+		localVarHeaderParams["X-CORRELATION-ID"] = parameterToString(localVarOptionals.XCORRELATIONID.Value(), "")
+	}
+	if localVarOptionals != nil && localVarOptionals.XAUTHUSERNAME.IsSet() {
+		localVarHeaderParams["X-AUTH-USER-NAME"] = parameterToString(localVarOptionals.XAUTHUSERNAME.Value(), "")
 	}
 	// body params
 	localVarPostBody = &body
